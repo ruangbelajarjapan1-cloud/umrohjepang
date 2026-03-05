@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. STICKY NAVBAR EFFECT
+    // 1. STICKY NAVBAR EFFECT (Light Theme Version)
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.classList.add('bg-primary/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-            navbar.classList.remove('bg-transparent', 'py-5');
+            navbar.classList.add('shadow-md', 'py-4', 'bg-white/95');
+            navbar.classList.remove('bg-white/80', 'py-4', 'shadow-sm');
         } else {
-            navbar.classList.add('bg-transparent', 'py-5');
-            navbar.classList.remove('bg-primary/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+            navbar.classList.add('bg-white/80', 'shadow-sm');
+            navbar.classList.remove('shadow-md', 'bg-white/95');
         }
     });
 
@@ -16,9 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeToggleIcon = document.getElementById('theme-toggle-icon');
     
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    // Default adalah LIGHT mode (karena permintaan cerah adem)
+    if (localStorage.theme === 'dark') {
         document.documentElement.classList.add('dark');
-        if(themeToggleIcon) themeToggleIcon.className = 'fas fa-sun text-champagne text-lg';
+        if(themeToggleIcon) themeToggleIcon.className = 'fas fa-sun text-accent text-lg';
+    } else {
+        document.documentElement.classList.remove('dark');
     }
 
     if(themeToggleBtn) {
@@ -26,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.documentElement.classList.toggle('dark');
             const isDark = document.documentElement.classList.contains('dark');
             localStorage.theme = isDark ? 'dark' : 'light';
-            themeToggleIcon.className = isDark ? 'fas fa-sun text-champagne text-lg' : 'fas fa-moon text-lg';
+            themeToggleIcon.className = isDark ? 'fas fa-sun text-accent text-lg' : 'fas fa-moon text-lg';
         });
     }
 
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 5. INTEGRASI BACKEND GOOGLE SHEETS
+    // 5. INTEGRASI BACKEND GOOGLE SHEETS (Link Milik Mas Wahyu)
     const GAS_URL = "https://script.google.com/macros/s/AKfycbxABK7a7u8qE5QsPCgUuSMkTAoPvCT_zC3YExkLKZ-tcwOZe-kWNhqA1U1j7KRc0IWTlA/exec"; 
 
     const formPendaftaran = document.getElementById('formPendaftaran');
@@ -72,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const btnSubmit = formPendaftaran.querySelector('button[type="submit"]');
             const originalText = btnSubmit.innerHTML;
             
-            btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Mengirim...';
+            btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Mengirim Data...';
             btnSubmit.disabled = true;
 
             const formData = new FormData(formPendaftaran);
@@ -82,13 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 await fetch(GAS_URL, { method: 'POST', body: data, mode: 'no-cors' });
                 formPendaftaran.innerHTML = `
                     <div class="text-center py-10 fade-in visible">
-                        <i class="fas fa-check-circle text-6xl text-champagne mb-6"></i>
-                        <h4 class="text-3xl font-serif text-primary dark:text-champagne font-bold mb-4">Pesan Diterima</h4>
-                        <p class="text-gray-500">Tim Haramain Private akan segera merespon melalui WhatsApp Anda.</p>
+                        <i class="fas fa-check-circle text-6xl text-accent mb-6 drop-shadow-md"></i>
+                        <h4 class="text-3xl font-serif text-primary dark:text-white font-bold mb-4">Pesan Diterima</h4>
+                        <p class="text-gray-500">Alhamdulillah, tim Haramain Private akan segera merespon melalui WhatsApp Anda.</p>
                     </div>
                 `;
             } catch (error) {
-                alert('Terdapat kendala. Silakan hubungi kami via WhatsApp.');
+                alert('Terdapat kendala jaringan. Silakan hubungi kami langsung via WhatsApp.');
                 btnSubmit.innerHTML = originalText;
                 btnSubmit.disabled = false;
             }
@@ -96,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// 6. MODAL LOGIC (ANIMASI TIMBUL / ZOOM-IN EFEK)
+// 6. MODAL LOGIC (ANIMASI TIMBUL / ZOOM-IN EFEK YAKNI SCALE-100)
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
 const modalDesc = document.getElementById('modalDesc');
@@ -106,23 +109,23 @@ function openModal(imgSrc, descText) {
     modalImg.src = imgSrc;
     modalDesc.innerText = descText;
     
-    // Tampilkan modal (background)
+    // Tampilkan modal (background hitam/biru transparan)
     modal.classList.remove('hidden');
     
-    // Animasi munculnya modal dan gambar yang membesar (Timbul)
+    // Animasi munculnya modal dan gambar yang membesar (Timbul/Pop-up)
     setTimeout(() => {
         modal.classList.remove('opacity-0');
         modalImg.classList.remove('scale-90');
-        modalImg.classList.add('scale-100'); // Efek gambar membesar ke depan
+        modalImg.classList.add('scale-100'); 
     }, 10);
     
-    document.body.style.overflow = 'hidden'; // Kunci scroll
+    document.body.style.overflow = 'hidden'; 
 }
 
 function closeModal() {
     if(!modal) return;
     
-    // Animasi gambar mengecil kembali
+    // Animasi gambar mengecil kembali (kembali ke scale-90)
     modalImg.classList.remove('scale-100');
     modalImg.classList.add('scale-90');
     modal.classList.add('opacity-0');
@@ -130,14 +133,13 @@ function closeModal() {
     setTimeout(() => { 
         modal.classList.add('hidden'); 
         modalImg.src = ""; 
-    }, 300); // Tunggu animasi selesai sebelum di-hide
+    }, 300); 
     
-    document.body.style.overflow = 'auto'; // Buka scroll
+    document.body.style.overflow = 'auto'; 
 }
 
 if(modal) {
     modal.addEventListener('click', (e) => {
-        // Hanya tutup jika klik di area luar gambar
         if (e.target === modal) closeModal();
     });
 }
