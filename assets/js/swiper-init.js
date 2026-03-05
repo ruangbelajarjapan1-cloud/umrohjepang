@@ -1,29 +1,28 @@
-// Konfigurasi Carousel Premium
+// Konfigurasi Carousel / Slideshow
 document.addEventListener("DOMContentLoaded", function() {
     const swiper = new Swiper(".mySwiper", {
-        // Efek transisi
         effect: "slide",
         speed: 800,
         spaceBetween: 30,
         grabCursor: true,
         centeredSlides: true,
-        loop: true, // Looping terus menerus
+        loop: true,
         
-        // Auto slide setiap 4 detik
+        // Auto slide
         autoplay: {
             delay: 4000,
             disableOnInteraction: false,
-            pauseOnMouseEnter: true, // Berhenti saat di-hover
+            pauseOnMouseEnter: true, 
         },
         
-        // Titik-titik navigasi di bawah gambar
+        // Titik navigasi
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
             dynamicBullets: true,
         },
         
-        // Responsif untuk berbagai ukuran layar
+        // Responsif
         breakpoints: {
             320: { slidesPerView: 1.1, spaceBetween: 20 },
             768: { slidesPerView: 1.5, spaceBetween: 30 },
