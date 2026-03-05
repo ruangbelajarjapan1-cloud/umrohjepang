@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 5. INTEGRASI BACKEND
+    // 5. INTEGRASI BACKEND (LINK DARI MAS WAHYU)
     const GAS_URL = "https://script.google.com/macros/s/AKfycbxABK7a7u8qE5QsPCgUuSMkTAoPvCT_zC3YExkLKZ-tcwOZe-kWNhqA1U1j7KRc0IWTlA/exec"; 
 
     const formPendaftaran = document.getElementById('formPendaftaran');
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const btnSubmit = formPendaftaran.querySelector('button[type="submit"]');
             const originalText = btnSubmit.innerHTML;
             
-            btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Memproses...';
+            btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Mengirim Data...';
             btnSubmit.disabled = true;
             btnSubmit.classList.add('opacity-70', 'cursor-not-allowed');
 
@@ -86,12 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 formPendaftaran.innerHTML = `
                     <div class="text-center py-10 fade-in visible">
                         <i class="fas fa-check-circle text-6xl text-gold mb-4 shadow-sm rounded-full"></i>
-                        <h4 class="text-2xl font-serif text-navy dark:text-white font-bold mb-3">Alhamdulillah</h4>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Pendaftaran Anda telah kami terima. Tim Safar Umroh akan segera menghubungi Anda melalui WhatsApp untuk kordinasi lebih lanjut.</p>
+                        <h4 class="text-2xl font-serif text-navy dark:text-white font-bold mb-3">Terima Kasih!</h4>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Permintaan konsultasi Anda telah masuk ke sistem kami. Tim representatif kami akan segera menghubungi Anda via WhatsApp.</p>
                     </div>
                 `;
             } catch (error) {
-                alert('Kendala jaringan. Silakan hubungi via WhatsApp.');
+                alert('Terdapat kendala jaringan. Silakan hubungi kami langsung via WhatsApp.');
                 btnSubmit.innerHTML = originalText;
                 btnSubmit.disabled = false;
                 btnSubmit.classList.remove('opacity-70', 'cursor-not-allowed');
