@@ -1,39 +1,83 @@
-// URL Web App dari Google Apps Script yang sudah di-deploy
-const GAS_URL = "https://script.google.com/macros/s/AKfycbxABK7a7u8qE5QsPCgUuSMkTAoPvCT_zC3YExkLKZ-tcwOZe-kWNhqA1U1j7KRc0IWTlA/exec";
+// ==========================================
+// 5. BACKEND INTEGRATION (GOOGLE APPS SCRIPT)
+// ==========================================
+// GANTI URL DI BAWAH INI DENGAN URL DEPLOYMENT GOOGLE APPS SCRIPT ANDA
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxABK7a7u8qE5QsPCgUuSMkTAoPvCT_zC3YExkLKZ-tcwOZe-kWNhqA1U1j7KRc0IWTlA/exec"; 
 
-const form = document.getElementById('formPendaftaran');
-const btnSubmit = document.getElementById('btnSubmit');
-const pesanSukses = document.getElementById('pesanSukses');
+// A. Handler untuk Form Pendaftaran
+const formPendaftaran = document.getElementById('formPendaftaran');
+if (formPendaftaran) {
+    formPendaftaran.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const btnSubmit = formPendaftaran.querySelector('button[type="submit"]');
+        const originalText = btnSubmit.innerHTML;
+        
+        // Ubah tampilan tombol saat loading
+        btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Mengirim Data...';
+        btnSubmit.disabled = true;
+        btnSubmit.classList.add('opacity-70', 'cursor-not-allowed');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Ubah status tombol
-    btnSubmit.innerText = "Mengirim...";
-    btnSubmit.disabled = true;
+        const formData = new FormData(formPendaftaran);
+        const data = new URLSearchParams(formData);
 
-    // Ambil data dari form
-    const formData = new FormData(form);
-    const data = new URLSearchParams(formData);
+        try {
+            await fetch(GAS_URL, {
+                method: 'POST',
+                body: data,
+                mode: 'no-cors' // Mencegah error CORS dari Google
+            });
 
-    try {
-        const response = await fetch(GAS_URL, {
-            method: 'POST',
-            body: data,
-            // Mode no-cors terkadang dibutuhkan untuk menghindar error CORS pada GAS
-            mode: 'no-cors' 
-        });
+            // Tampilkan pesan sukses elegan
+            formPendaftaran.innerHTML = `
+                <div class="text-center py-8 fade-in visible">
+                    <i class="fas fa-check-circle text-5xl text-gold mb-4"></i>
+                    <h4 class="text-2xl font-serif text-navy dark:text-white font-bold mb-2">Alhamdulillah</h4>
+                    <p class="text-gray-600 dark:text-gray-300">Pendaftaran awal berhasil diterima. Tim kami akan segera menghubungi Anda melalui WhatsApp.</p>
+                </div>
+            `;
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Afwan, terjadi kendala jaringan. Silakan hubungi kami langsung via WhatsApp.');
+            btnSubmit.innerHTML = originalText;
+            btnSubmit.disabled = false;
+            btnSubmit.classList.remove('opacity-70', 'cursor-not-allowed');
+        }
+    });
+}
 
-        // Tampilkan pesan sukses
-        form.reset();
-        form.classList.add('hidden');
-        pesanSukses.classList.remove('hidden');
+// B. Handler untuk Form Tanya Jawab (Q&A)
+const formQna = document.getElementById('formQna');
+if (formQna) {
+    formQna.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const btnSubmit = formQna.querySelector('button[type="submit"]');
+        const originalText = btnSubmit.innerHTML;
+        
+        btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Mengirim...';
+        btnSubmit.disabled = true;
 
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Terjadi kesalahan. Silakan coba lagi atau hubungi via WhatsApp.');
-    } finally {
-        btnSubmit.innerText = "Kirim Pendaftaran";
-        btnSubmit.disabled = false;
-    }
-});
+        const formData = new FormData(formQna);
+        // Pastikan ada input hidden action=qna di form HTML nya
+        const data = new URLSearchParams(formData);
+
+        try {
+            await fetch(GAS_URL, {
+                method: 'POST',
+                body: data,
+                mode: 'no-cors'
+            });
+
+            formQna.reset();
+            alert('Jazakumullah khairan. Pertanyaan Anda telah terkirim dan akan dijawab oleh Admin/Ustadz.');
+            
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Afwan, gagal mengirim pertanyaan.');
+        } finally {
+            btnSubmit.innerHTML = originalText;
+            btnSubmit.disabled = false;
+        }
+    });
+}
