@@ -4,24 +4,12 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Playfair Display', serif; }
 
-/* Custom Scrollbar Premium */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f8f9fa; }
-.dark ::-webkit-scrollbar-track { background: #0B0F19; }
-::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #b8972e; }
-
-/* Hero Background Deep Navy */
-.hero-bg {
-    background-color: #0A1424;
-    background-image: radial-gradient(circle at top right, #112340 0%, transparent 40%),
-                      radial-gradient(circle at bottom left, #112340 0%, transparent 40%);
-}
-
-.dark .hero-bg {
-    background-color: #05080f;
-    background-image: radial-gradient(circle at top right, #0A1424 0%, transparent 40%);
-}
+/* Custom Scrollbar (Warna Soft Sand) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F4F7F6; }
+.dark ::-webkit-scrollbar-track { background: #121A26; }
+::-webkit-scrollbar-thumb { background: #C5A880; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #A88F6A; }
 
 /* Scroll Animation Fade-in */
 .fade-in {
