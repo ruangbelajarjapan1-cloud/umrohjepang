@@ -1,64 +1,35 @@
-/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-/* Base Styles */
-html {
-    scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Playfair Display', serif; }
+
+/* Custom Scrollbar Premium */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f8f9fa; }
+.dark ::-webkit-scrollbar-track { background: #0B0F19; }
+::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #b8972e; }
+
+/* Hero Background Deep Navy */
+.hero-bg {
+    background-color: #0A1424;
+    background-image: radial-gradient(circle at top right, #112340 0%, transparent 40%),
+                      radial-gradient(circle at bottom left, #112340 0%, transparent 40%);
 }
 
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
+.dark .hero-bg {
+    background-color: #05080f;
+    background-image: radial-gradient(circle at top right, #0A1424 0%, transparent 40%);
 }
 
-h1, h2, h3, h4, h5, h6, .font-serif {
-    font-family: 'Playfair Display', serif;
-}
-
-/* Custom Scrollbar (Premium Vibe) */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
-.dark ::-webkit-scrollbar-track {
-    background: #121212; 
-}
-::-webkit-scrollbar-thumb {
-    background: #E8C162; /* Gold yang lebih cerah */
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #d4a742; 
-}
-
-/* Custom Gradients - Warna Lebih Cerah & Elegan */
-.hero-gradient {
-    background: linear-gradient(135deg, #1A3C6D 0%, #15315C 100%);
-    border-bottom: 3px solid #E8C162;
-}
-.dark .hero-gradient {
-    background: linear-gradient(135deg, #121212 0%, #1E293B 100%);
-    border-bottom: 3px solid #E8C162;
-}
-
-/* Animations (Scroll Fade-in) */
+/* Scroll Animation Fade-in */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Menghilangkan tanda panah default pada Accordion details/summary */
-details > summary {
-    list-style: none;
-}
-details > summary::-webkit-details-marker {
-    display: none;
 }
