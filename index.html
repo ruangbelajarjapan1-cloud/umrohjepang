@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haramain Private | Layanan Umroh Hemat dari Jepang</title>
+    <title>Haramain Private | Layanan Umroh Jepang</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,14 +12,12 @@
             theme: {
                 extend: {
                     colors: { 
-                        // Skema warna baru yang JAUH lebih elegan dari Gold
-                        primary: '#0F172A', /* Slate 900 - Deep Charcoal/Navy */
-                        secondary: '#1E293B', /* Slate 800 */
-                        champagne: '#E6DFD4', /* Soft Beige/Champagne - Pengganti Gold */
-                        'champagne-dark': '#C9BCA7', /* Champagne gelap untuk hover */
-                        platinum: '#F8F9FA', /* Off-white super bersih */
-                        darkbg: '#0B0F19', 
-                        darkcard: '#131A2A' 
+                        primary: '#1A2F4C',    /* Biru gelap yang menenangkan untuk teks */
+                        lightbg: '#F4F7F6',    /* Putih sejuk/pearl - Cerah dan Adem */
+                        accent: '#C5A880',     /* Gold pastel/sand - Elegan, tidak norak */
+                        'accent-light': '#E8DCC8', 
+                        darkbg: '#121A26', 
+                        darkcard: '#1B2738' 
                     },
                     fontFamily: { 
                         serif: ['Playfair Display', 'serif'], 
@@ -34,48 +32,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-platinum text-gray-800 dark:bg-darkbg dark:text-gray-200 transition-colors duration-300 font-sans">
+<body class="bg-white text-gray-700 dark:bg-darkbg dark:text-gray-200 transition-colors duration-300 font-sans">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-transparent py-5">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-white/80 backdrop-blur-md shadow-sm py-4 border-b border-gray-100 dark:border-gray-800 dark:bg-darkcard/90">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <h1 class="text-2xl font-serif font-bold text-white tracking-widest uppercase">Haramain <span class="text-champagne italic">Private</span></h1>
+            <h1 class="text-2xl font-serif font-bold text-primary dark:text-white tracking-widest uppercase">Haramain <span class="text-accent italic">Private</span></h1>
             <div class="flex items-center gap-8">
-                <div class="hidden lg:flex space-x-8 text-sm font-medium text-white/80">
-                    <a href="#hero" class="hover:text-champagne transition duration-300">Beranda</a>
-                    <a href="#layanan" class="hover:text-champagne transition duration-300">Layanan</a>
-                    <a href="#galeri" class="hover:text-champagne transition duration-300">Galeri</a>
-                    <a href="#daftar" class="hover:text-champagne transition duration-300">Konsultasi</a>
+                <div class="hidden lg:flex space-x-8 text-sm font-semibold text-primary dark:text-gray-300">
+                    <a href="#hero" class="hover:text-accent transition duration-300">Beranda</a>
+                    <a href="#layanan" class="hover:text-accent transition duration-300">Layanan</a>
+                    <a href="#galeri" class="hover:text-accent transition duration-300">Galeri</a>
+                    <a href="#testimoni" class="hover:text-accent transition duration-300">Testimoni</a>
                 </div>
-                <button id="theme-toggle" class="text-white hover:text-champagne p-2 rounded-full transition duration-300">
+                <button id="theme-toggle" class="text-primary dark:text-accent hover:text-accent p-2 rounded-full transition duration-300 bg-lightbg dark:bg-primary/50">
                     <i id="theme-toggle-icon" class="fas fa-moon text-lg"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <section id="hero" class="bg-primary min-h-screen flex items-center pt-20 pb-20 px-6 text-center text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('assets/img/pattern.png')] opacity-5 z-0"></div> <div class="container mx-auto relative z-10 fade-in flex flex-col items-center">
-            <span class="inline-block border border-champagne/50 text-champagne px-6 py-2 rounded-full text-xs font-semibold tracking-[0.25em] mb-8 uppercase bg-white/5 backdrop-blur-sm">Exclusive Services</span>
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight text-white drop-shadow-lg">Perjalanan Suci,<br><span class="text-champagne">Tanpa Batasan.</span></h2>
-            <p class="text-base md:text-xl mb-12 max-w-2xl mx-auto opacity-80 font-light leading-relaxed">Nikmati kenyamanan Umroh Private dari Jepang. Mulai dari pengurusan Visa, transportasi eksklusif, hingga Muthawwif pribadi. Fokus beribadah, sisanya kami yang urus.</p>
+    <section id="hero" class="bg-lightbg dark:bg-darkbg min-h-screen flex items-center pt-28 pb-20 px-6 text-center relative overflow-hidden">
+        <div class="absolute top-[-10%] left-[-5%] w-[40rem] h-[40rem] bg-white dark:bg-darkcard rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[30rem] h-[30rem] bg-accent-light/30 dark:bg-primary/20 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+
+        <div class="container mx-auto relative z-10 fade-in flex flex-col items-center">
+            <span class="inline-block bg-white dark:bg-primary/50 text-accent border border-accent/30 px-6 py-2 rounded-full text-xs font-bold tracking-[0.2em] mb-8 uppercase shadow-sm">Layanan Premium Jepang</span>
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight text-primary dark:text-white">Perjalanan Suci,<br><span class="text-accent">Penuh Ketenangan.</span></h2>
+            <p class="text-base md:text-lg mb-12 max-w-2xl mx-auto text-gray-600 dark:text-gray-400 font-medium leading-relaxed">Nikmati kenyamanan Umroh Private dengan fasilitas Bintang 5. Dari pengurusan Visa hingga pendampingan Muthawwif, kami hadir agar Anda bisa fokus beribadah.</p>
             <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-4">
-                <a href="#daftar" class="w-full sm:w-auto bg-champagne text-primary font-bold py-4 px-10 rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl">Rencanakan Perjalanan</a>
+                <a href="#daftar" class="w-full sm:w-auto bg-primary text-white font-bold py-4 px-10 rounded-full hover:bg-accent hover:shadow-lg hover:-translate-y-1 transition-all duration-300">Konsultasi Gratis</a>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-platinum dark:bg-darkbg fade-in" id="layanan">
+    <section class="py-24 bg-white dark:bg-darkcard fade-in" id="layanan">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-xs font-bold text-gray-500 dark:text-gray-400 tracking-[0.2em] uppercase mb-3">Informasi Program</h3>
-                <h4 class="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-champagne">Layanan Tersedia</h4>
+                <h3 class="text-xs font-bold text-accent tracking-[0.2em] uppercase mb-3">Informasi Program</h3>
+                <h4 class="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-white">Layanan Tersedia</h4>
             </div>
-            <div class="swiper mySwiper rounded-3xl shadow-2xl overflow-hidden cursor-pointer max-w-5xl mx-auto bg-white dark:bg-darkcard">
+            
+            <div class="swiper mySwiper rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.05)] overflow-hidden cursor-pointer max-w-5xl mx-auto bg-lightbg dark:bg-darkbg border border-gray-100 dark:border-gray-800">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide overflow-hidden group" onclick="openModal('assets/img/promo-1.jpg', 'Brosur Layanan Kami')">
-                        <div class="w-full h-[500px] bg-gray-100 dark:bg-secondary flex flex-col items-center justify-center text-gray-400 transition-transform duration-700 group-hover:scale-105 group-active:scale-95">
-                            <i class="fas fa-expand text-4xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity"></i>
-                            <p class="font-medium tracking-wide">Klik untuk perbesar brosur</p>
+                    <div class="swiper-slide overflow-hidden group" onclick="openModal('assets/img/promo-1.jpg', 'Brosur Layanan Haramain Private')">
+                        <div class="w-full h-[500px] flex flex-col items-center justify-center text-gray-400 transition-transform duration-700 group-hover:scale-105">
+                            <i class="fas fa-search-plus text-4xl mb-4 text-accent opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                            <p class="font-medium tracking-wide text-primary dark:text-gray-300">Klik untuk melihat brosur</p>
                         </div>
                     </div>
                 </div>
@@ -84,47 +86,90 @@
         </div>
     </section>
 
-    <section class="py-20 bg-white dark:bg-[#080B14] fade-in" id="galeri">
+    <section class="py-20 bg-lightbg dark:bg-darkbg fade-in" id="galeri">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-xs font-bold text-gray-500 tracking-[0.2em] uppercase mb-3">Potret Layanan</h3>
-                <h4 class="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-champagne">Galeri Eksklusif</h4>
+                <h3 class="text-xs font-bold text-accent tracking-[0.2em] uppercase mb-3">Potret Perjalanan</h3>
+                <h4 class="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-white">Galeri Eksklusif</h4>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="aspect-square rounded-2xl overflow-hidden shadow-md bg-gray-100 dark:bg-secondary relative group cursor-pointer transition-transform duration-300 active:scale-90" onclick="openModal('assets/img/galeri-1.jpg', 'Masjid Nabawi')">
-                    <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                    <div class="w-full h-full flex flex-col items-center justify-center text-gray-400 group-hover:scale-110 transition-transform duration-700">
-                        <span class="text-sm font-serif">Foto 1</span>
+                <div class="aspect-square rounded-2xl overflow-hidden shadow-sm bg-white dark:bg-darkcard relative group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1" onclick="openModal('assets/img/galeri-1.jpg', 'Suasana Tenang di Masjid Nabawi')">
+                    <div class="w-full h-full flex flex-col items-center justify-center text-accent group-hover:scale-110 transition-transform duration-700">
+                        <i class="fas fa-camera text-3xl mb-2 opacity-50"></i><span class="text-sm font-medium text-primary dark:text-gray-300">Masjid Nabawi</span>
                     </div>
                 </div>
-                <div class="aspect-square rounded-2xl overflow-hidden shadow-md bg-gray-100 dark:bg-secondary relative group cursor-pointer transition-transform duration-300 active:scale-90" onclick="openModal('assets/img/galeri-2.jpg', 'Kenyamanan Hotel')">
-                    <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                    <div class="w-full h-full flex flex-col items-center justify-center text-gray-400 group-hover:scale-110 transition-transform duration-700">
-                        <span class="text-sm font-serif">Foto 2</span>
+                <div class="aspect-square rounded-2xl overflow-hidden shadow-sm bg-white dark:bg-darkcard relative group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1" onclick="openModal('assets/img/galeri-2.jpg', 'Fasilitas Kamar Hotel Bintang 5')">
+                    <div class="w-full h-full flex flex-col items-center justify-center text-accent group-hover:scale-110 transition-transform duration-700">
+                        <i class="fas fa-bed text-3xl mb-2 opacity-50"></i><span class="text-sm font-medium text-primary dark:text-gray-300">Akomodasi</span>
                     </div>
                 </div>
-                <div class="aspect-square rounded-2xl overflow-hidden shadow-md bg-gray-100 dark:bg-secondary relative group cursor-pointer transition-transform duration-300 active:scale-90" onclick="openModal('assets/img/galeri-3.jpg', 'Transportasi VIP')">
-                    <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                    <div class="w-full h-full flex flex-col items-center justify-center text-gray-400 group-hover:scale-110 transition-transform duration-700">
-                        <span class="text-sm font-serif">Foto 3</span>
+                <div class="aspect-square rounded-2xl overflow-hidden shadow-sm bg-white dark:bg-darkcard relative group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1" onclick="openModal('assets/img/galeri-3.jpg', 'Transportasi VIP yang Nyaman')">
+                    <div class="w-full h-full flex flex-col items-center justify-center text-accent group-hover:scale-110 transition-transform duration-700">
+                        <i class="fas fa-bus text-3xl mb-2 opacity-50"></i><span class="text-sm font-medium text-primary dark:text-gray-300">Transportasi VIP</span>
                     </div>
                 </div>
-                <div class="aspect-square rounded-2xl overflow-hidden shadow-md bg-gray-100 dark:bg-secondary relative group cursor-pointer transition-transform duration-300 active:scale-90" onclick="openModal('assets/img/galeri-4.jpg', 'Layanan Muthawwif')">
-                    <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                    <div class="w-full h-full flex flex-col items-center justify-center text-gray-400 group-hover:scale-110 transition-transform duration-700">
-                        <span class="text-sm font-serif">Foto 4</span>
+                <div class="aspect-square rounded-2xl overflow-hidden shadow-sm bg-white dark:bg-darkcard relative group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1" onclick="openModal('assets/img/galeri-4.jpg', 'Pelayanan Muthawwif Bermanhaj Salaf')">
+                    <div class="w-full h-full flex flex-col items-center justify-center text-accent group-hover:scale-110 transition-transform duration-700">
+                        <i class="fas fa-user-tie text-3xl mb-2 opacity-50"></i><span class="text-sm font-medium text-primary dark:text-gray-300">Muthawwif</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-4 md:px-6 fade-in relative" id="daftar">
-        <div class="max-w-4xl mx-auto bg-white dark:bg-secondary p-8 md:p-14 rounded-[2.5rem] shadow-2xl relative z-10 border border-gray-100 dark:border-gray-800">
+    <section class="py-24 bg-white dark:bg-darkcard fade-in" id="testimoni">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-xs font-bold text-accent tracking-[0.2em] uppercase mb-3">Kesan & Pesan</h3>
+                <h4 class="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-white">Pengalaman Jamaah Kami</h4>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-lightbg dark:bg-darkbg p-10 rounded-[2rem] relative shadow-sm hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-quote-left text-5xl text-accent/20 absolute top-6 left-8"></i>
+                    <p class="text-gray-700 dark:text-gray-300 mt-6 relative z-10 italic leading-relaxed text-sm md:text-base">"Alhamdulillah, umroh private bersama keluarga terasa sangat eksklusif. Jadwal sangat fleksibel dan anak-anak tidak kelelahan. Pengurusan visa dari Jepang juga sangat cepat."</p>
+                    <div class="mt-8 flex items-center gap-4 border-t border-gray-200 dark:border-gray-800 pt-6">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">R</div>
+                        <div>
+                            <h5 class="font-bold text-primary dark:text-white text-sm tracking-wide">Kel. Bapak Riza</h5>
+                            <p class="text-xs text-accent font-bold uppercase tracking-wider mt-1">Tokyo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-lightbg dark:bg-darkbg p-10 rounded-[2rem] relative shadow-sm hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-quote-left text-5xl text-accent/20 absolute top-6 left-8"></i>
+                    <p class="text-gray-700 dark:text-gray-300 mt-6 relative z-10 italic leading-relaxed text-sm md:text-base">"Pelayanan Muthawwif sangat mumpuni. Akomodasi hotel bintang 5 benar-benar di ring 1, sangat memudahkan kami untuk bolak-balik ke Masjidil Haram tanpa rasa lelah."</p>
+                    <div class="mt-8 flex items-center gap-4 border-t border-gray-200 dark:border-gray-800 pt-6">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
+                        <div>
+                            <h5 class="font-bold text-primary dark:text-white text-sm tracking-wide">Abdullah</h5>
+                            <p class="text-xs text-accent font-bold uppercase tracking-wider mt-1">Yokohama</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-lightbg dark:bg-darkbg p-10 rounded-[2rem] relative shadow-sm hover:shadow-xl transition-all duration-300">
+                    <i class="fas fa-quote-left text-5xl text-accent/20 absolute top-6 left-8"></i>
+                    <p class="text-gray-700 dark:text-gray-300 mt-6 relative z-10 italic leading-relaxed text-sm md:text-base">"Sangat direkomendasikan untuk pekerja di Jepang. Transportasi VIP selama di Saudi membuat perjalanan antar kota sangat nyaman, ibadah jadi lebih fokus."</p>
+                    <div class="mt-8 flex items-center gap-4 border-t border-gray-200 dark:border-gray-800 pt-6">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">D</div>
+                        <div>
+                            <h5 class="font-bold text-primary dark:text-white text-sm tracking-wide">Kel. Bapak Dimas</h5>
+                            <p class="text-xs text-accent font-bold uppercase tracking-wider mt-1">Osaka</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 md:px-6 fade-in relative bg-lightbg dark:bg-darkbg" id="daftar">
+        <div class="max-w-4xl mx-auto bg-white dark:bg-darkcard p-8 md:p-14 rounded-[2.5rem] shadow-[0_15px_50px_rgba(0,0,0,0.06)] relative z-10 border border-gray-100 dark:border-gray-800">
             <div class="text-center mb-10">
-                <h3 class="text-3xl font-serif text-primary dark:text-champagne font-bold mb-4">Konsultasikan Kebutuhan Anda</h3>
-                <p class="text-gray-500 dark:text-gray-400">Pilih layanan yang Anda butuhkan, kami akan menyusun rencana perjalanan terbaik.</p>
+                <h3 class="text-3xl font-serif text-primary dark:text-white font-bold mb-4">Konsultasikan Kebutuhan Anda</h3>
+                <p class="text-gray-500 dark:text-gray-400">Pilih layanan yang Anda butuhkan, tim kami akan merespon dengan cepat.</p>
             </div>
             
             <form id="formPendaftaran" class="space-y-8">
@@ -132,23 +177,23 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Nama Lengkap</label>
-                        <input type="text" name="nama" required class="w-full p-4 bg-platinum dark:bg-primary border-none rounded-2xl focus:ring-2 focus:ring-champagne text-primary dark:text-white transition-all">
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Nama Lengkap</label>
+                        <input type="text" name="nama" required class="w-full p-4 bg-lightbg dark:bg-darkbg border border-gray-100 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-accent focus:outline-none text-primary dark:text-white transition-all">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">No. WhatsApp</label>
-                        <input type="tel" name="telepon" required class="w-full p-4 bg-platinum dark:bg-primary border-none rounded-2xl focus:ring-2 focus:ring-champagne text-primary dark:text-white transition-all">
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">No. WhatsApp</label>
+                        <input type="tel" name="telepon" required class="w-full p-4 bg-lightbg dark:bg-darkbg border border-gray-100 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-accent focus:outline-none text-primary dark:text-white transition-all">
                     </div>
                 </div>
                 
                 <div>
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Pilihan Layanan</label>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Pilihan Layanan</label>
                     <div class="relative">
-                        <select name="paket" class="w-full p-4 bg-platinum dark:bg-primary border-none rounded-2xl focus:ring-2 focus:ring-champagne text-primary dark:text-white appearance-none cursor-pointer font-medium">
+                        <select name="paket" class="w-full p-4 bg-lightbg dark:bg-darkbg border border-gray-100 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-accent focus:outline-none text-primary dark:text-white appearance-none cursor-pointer font-medium">
                             <option value="Paket Lengkap Private">Paket Lengkap Umroh Private</option>
                             <option value="Jasa Visa Saja">Jasa Pengurusan Visa Umroh Saja</option>
                             <option value="Sewa Transportasi">Sewa Mobil / Bus VIP di Saudi</option>
-                            <option value="Jasa Muthawwif">Jasa Pendampingan Muthawwif / Badal</option>
+                            <option value="Jasa Muthawwif">Jasa Pendampingan Muthawwif</option>
                             <option value="Paket Reguler">Paket Umroh Reguler (Grup)</option>
                         </select>
                         <i class="fas fa-chevron-down absolute right-5 top-5 text-gray-400 pointer-events-none"></i>
@@ -156,23 +201,23 @@
                 </div>
                 
                 <div>
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Domisili di Jepang</label>
-                    <input type="text" name="domisili" placeholder="Contoh: Tokyo" class="w-full p-4 bg-platinum dark:bg-primary border-none rounded-2xl focus:ring-2 focus:ring-champagne text-primary dark:text-white transition-all">
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Domisili di Jepang</label>
+                    <input type="text" name="domisili" placeholder="Contoh: Yokohama" class="w-full p-4 bg-lightbg dark:bg-darkbg border border-gray-100 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-accent focus:outline-none text-primary dark:text-white transition-all">
                 </div>
                 
-                <button type="submit" class="w-full bg-primary dark:bg-champagne text-white dark:text-primary font-bold py-5 rounded-2xl hover:bg-secondary dark:hover:bg-white transition-all mt-6 shadow-lg hover:shadow-xl text-lg tracking-wide">Kirim Permintaan Konsultasi</button>
+                <button type="submit" class="w-full bg-primary text-white font-bold py-5 rounded-2xl hover:bg-accent hover:shadow-xl hover:-translate-y-1 transition-all mt-6 text-lg tracking-wide">Kirim Permintaan Konsultasi</button>
             </form>
         </div>
     </section>
 
-    <footer class="bg-primary text-white text-center py-16">
-        <h2 class="text-3xl font-serif font-bold text-champagne mb-4 tracking-widest uppercase">Haramain <span class="italic font-light">Private</span></h2>
-        <p class="text-sm opacity-60 max-w-md mx-auto mb-8 font-light tracking-wide">Layanan Perjalanan Suci Eksklusif dari Jepang.</p>
-        <p class="text-xs opacity-40">© 2026 Haramain Private. Hak Cipta Dilindungi.</p>
+    <footer class="bg-primary text-white text-center py-16 border-t-8 border-accent">
+        <h2 class="text-3xl font-serif font-bold text-white mb-4 tracking-widest uppercase">Haramain <span class="text-accent italic font-light">Private</span></h2>
+        <p class="text-sm opacity-80 max-w-md mx-auto mb-8 font-light tracking-wide text-lightbg">Layanan Perjalanan Suci Eksklusif dari Jepang.</p>
+        <p class="text-xs opacity-50">© 2026 Haramain Private. Hak Cipta Dilindungi.</p>
     </footer>
 
     <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <button id="scrollTopBtn" class="bg-white/10 backdrop-blur-md text-white p-4 rounded-full shadow-lg hover:bg-champagne hover:text-primary transition-all scale-0 duration-300 w-14 h-14 border border-white/20">
+        <button id="scrollTopBtn" class="bg-white text-primary p-4 rounded-full shadow-lg hover:bg-lightbg transition-all scale-0 duration-300 w-14 h-14 border border-gray-100 flex items-center justify-center">
             <i class="fas fa-arrow-up text-lg"></i>
         </button>
         <a href="https://wa.me/818088452258?text=Bismillah.%20Assalamu%27alaikum.%20Saya%20tertarik%20dengan%20layanan%20Haramain%20Private." target="_blank" rel="noopener noreferrer" class="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 w-14 h-14 flex items-center justify-center">
@@ -180,11 +225,11 @@
         </a>
     </div>
 
-    <div id="imageModal" class="fixed inset-0 bg-primary/95 backdrop-blur-sm z-[100] hidden flex items-center justify-center opacity-0 transition-opacity duration-300 p-4">
-        <button onclick="closeModal()" class="absolute top-6 right-6 text-white/50 text-4xl hover:text-white transition cursor-pointer"><i class="fas fa-times"></i></button>
+    <div id="imageModal" class="fixed inset-0 bg-primary/90 backdrop-blur-sm z-[100] hidden flex items-center justify-center opacity-0 transition-opacity duration-300 p-4">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white/70 text-4xl hover:text-accent transition cursor-pointer"><i class="fas fa-times"></i></button>
         <div class="max-w-5xl w-full mx-auto text-center flex flex-col items-center justify-center h-full">
-            <img id="modalImage" src="" alt="Zoom" class="max-h-[80vh] max-w-full rounded-2xl shadow-2xl mb-6 object-contain transform scale-90 transition-transform duration-500" id="modal-content">
-            <p id="modalDesc" class="text-champagne text-lg font-serif bg-black/40 px-6 py-2 rounded-full border border-white/10"></p>
+            <img id="modalImage" src="" alt="Zoom" class="max-h-[80vh] max-w-full rounded-2xl shadow-2xl mb-6 object-contain transform scale-90 transition-transform duration-500 ease-out">
+            <p id="modalDesc" class="text-white text-lg font-serif bg-primary/80 px-6 py-2 rounded-full border border-white/20 shadow-lg"></p>
         </div>
     </div>
 
