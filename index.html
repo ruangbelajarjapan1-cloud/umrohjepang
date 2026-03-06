@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-brand-bg text-brand-dark transition-colors duration-300 font-sans">
+<body class="bg-brand-bg text-brand-dark transition-colors duration-300 font-sans pb-16 md:pb-0">
 
     <header class="fixed w-full top-0 left-0 z-50 flex flex-col transition-all duration-300">
         <div id="top-banner" class="bg-brand-cyan text-white py-2 px-4 text-center text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 overflow-hidden opacity-100 origin-top h-auto">
@@ -43,7 +43,7 @@
 
         <nav id="navbar" class="w-full transition-all duration-300 bg-transparent py-5 border-b border-transparent">
             <div class="container mx-auto px-6 flex justify-between items-center">
-                <a href="#" class="flex items-center gap-3 group">
+                <a href="#hero" class="flex items-center gap-3 group">
                     <i class="fas fa-kaaba text-brand-cyan text-2xl group-hover:scale-110 transition-transform"></i>
                     <h1 class="text-xl font-extrabold text-brand-dark tracking-tight shadow-sm md:shadow-none bg-white/80 md:bg-transparent px-2 md:px-0 rounded backdrop-blur-sm md:backdrop-blur-none">Haramain <span class="text-brand-cyan">Private</span></h1>
                 </a>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <button id="lang-toggle" class="text-xs md:text-sm font-bold text-gray-600 bg-white/80 backdrop-blur-sm hover:text-brand-dark transition border border-gray-200 px-3 py-1 rounded-full">
+                    <button id="lang-toggle" class="text-xs md:text-sm font-bold text-gray-600 bg-white/80 backdrop-blur-sm hover:text-brand-dark transition border border-gray-200 px-3 py-1 rounded-full shadow-sm">
                         ID | EN
                     </button>
                     <a href="#daftar" class="hidden md:flex bg-brand-cyan text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#0096D1] transition shadow-md">
@@ -438,7 +438,7 @@
         </div>
     </section>
 
-    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-cyan">
+    <footer class="bg-brand-dark text-white pt-16 pb-24 md:pb-8 border-t-4 border-brand-cyan">
         <div class="container mx-auto px-6 text-center">
             <i class="fas fa-kaaba text-4xl text-brand-cyan mb-4"></i>
             <h2 class="text-2xl font-bold mb-2">Haramain Private</h2>
@@ -447,9 +447,30 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/818088452258?text=Bismillah.%20Assalamu%27alaikum.%20Admin%20Haramain,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Umroh%20dari%20Jepang." target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center z-50">
+    <button id="scrollTopBtn" class="fixed bottom-36 md:bottom-28 right-4 md:right-6 bg-brand-dark text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible translate-y-4 transition-all duration-300 z-40 hover:bg-brand-cyan hover:-translate-y-1 border border-gray-600">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <a href="https://wa.me/818088452258?text=Bismillah.%20Assalamu%27alaikum.%20Admin%20Haramain,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Umroh%20dari%20Jepang." target="_blank" class="fixed bottom-20 md:bottom-10 right-4 md:right-6 bg-[#25D366] text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center z-50">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
+
+    <div class="md:hidden fixed bottom-0 w-full bg-white border-t border-gray-200 flex justify-around items-center py-2 px-1 z-50 shadow-[0_-5px_10px_rgba(0,0,0,0.05)]">
+        <a href="#hero" class="flex flex-col items-center text-gray-500 hover:text-brand-cyan transition w-1/3">
+            <i class="fas fa-home text-lg mb-1"></i>
+            <span class="text-[10px] font-bold"><span class="lang-id">Home</span><span class="lang-en hidden">Home</span></span>
+        </a>
+        <a href="#komparasi" class="flex flex-col items-center text-gray-500 hover:text-brand-cyan transition w-1/3">
+            <i class="fas fa-box text-lg mb-1"></i>
+            <span class="text-[10px] font-bold"><span class="lang-id">Paket</span><span class="lang-en hidden">Package</span></span>
+        </a>
+        <div class="w-1/3 flex justify-center">
+            <a href="#daftar" class="flex flex-col items-center bg-brand-cyan text-white px-5 py-2 rounded-full shadow-md hover:bg-[#0096D1] transition w-full text-center">
+                <i class="fas fa-edit text-sm mb-0.5"></i>
+                <span class="text-[10px] font-bold"><span class="lang-id">Daftar</span><span class="lang-en hidden">Apply</span></span>
+            </a>
+        </div>
+    </div>
 
     <div id="imageModal" class="fixed inset-0 bg-brand-dark/95 backdrop-blur-md z-[100] hidden flex items-center justify-center opacity-0 transition-opacity duration-300 p-4">
         <button onclick="closeModal()" class="absolute top-6 right-6 text-white/50 hover:text-white text-4xl transition-colors"><i class="fas fa-times"></i></button>
