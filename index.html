@@ -35,37 +35,42 @@
 </head>
 <body class="bg-brand-bg text-brand-dark transition-colors duration-300 font-sans">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm py-4 border-b border-gray-100">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3 group">
-                <i class="fas fa-kaaba text-brand-cyan text-2xl group-hover:scale-110 transition-transform"></i>
-                <h1 class="text-xl font-extrabold text-brand-dark tracking-tight">Haramain <span class="text-brand-cyan">Private</span></h1>
-            </a>
-            
-            <div class="hidden lg:flex space-x-8 text-sm font-semibold text-gray-500">
-                <a href="#hero" class="hover:text-brand-cyan transition"><span class="lang-id">Beranda</span><span class="lang-jp hidden">ホーム</span></a>
-                <a href="#edukasi" class="hover:text-brand-cyan transition"><span class="lang-id">Panduan</span><span class="lang-jp hidden">ガイド</span></a>
-                <a href="#komparasi" class="hover:text-brand-cyan transition"><span class="lang-id">Keunggulan</span><span class="lang-jp hidden">メリット</span></a>
-                <a href="#faq" class="hover:text-brand-cyan transition"><span class="lang-id">FAQ</span><span class="lang-jp hidden">よくある質問</span></a>
-                <a href="#galeri" class="hover:text-brand-cyan transition"><span class="lang-id">Galeri</span><span class="lang-jp hidden">ギャラリー</span></a>
-                <a href="#alur" class="hover:text-brand-cyan transition"><span class="lang-id">Alur</span><span class="lang-jp hidden">手順</span></a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <button id="lang-toggle" class="text-xs md:text-sm font-bold text-gray-400 hover:text-brand-dark transition border border-gray-200 px-3 py-1 rounded-full">
-                    ID | 日本語
-                </button>
-                <a href="#daftar" class="hidden md:flex bg-brand-cyan text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#0096D1] transition shadow-md">
-                    <span class="lang-id">Konsultasi</span><span class="lang-jp hidden">相談する</span>
-                </a>
-            </div>
+    <header class="fixed w-full top-0 left-0 z-50 flex flex-col transition-all duration-300">
+        
+        <div id="top-banner" class="bg-brand-cyan text-white py-2 px-4 text-center text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 overflow-hidden opacity-100 origin-top h-auto">
+            <span class="lang-id">📅 Persiapkan ibadah Anda untuk libur <span class="font-extrabold text-brand-dark bg-white/20 px-2 py-0.5 rounded">Golden Week</span> & <span class="font-extrabold text-brand-dark bg-white/20 px-2 py-0.5 rounded">Nenmatsu Nenshi</span>. Kuota Private sangat terbatas!</span>
+            <span class="lang-jp hidden">📅 ゴールデンウィークと年末年始の礼拝の準備をしましょう。プライベート枠には限りがあります！</span>
         </div>
-    </nav>
-<div class="bg-brand-cyan text-white py-2 px-4 text-center text-xs md:text-sm font-semibold tracking-wide relative z-[60]">
-        <span class="lang-id">📅 Persiapkan ibadah Anda untuk libur <span class="font-extrabold text-brand-dark bg-white/20 px-2 py-0.5 rounded">Golden Week</span> & <span class="font-extrabold text-brand-dark bg-white/20 px-2 py-0.5 rounded">Nenmatsu Nenshi</span>. Kuota Private sangat terbatas!</span>
-        <span class="lang-jp hidden">📅 ゴールデンウィークと年末年始の礼拝の準備をしましょう。プライベート枠には限りがあります！</span>
-    </div>
-    <section id="hero" class="relative pt-32 pb-40 lg:pt-48 lg:pb-56 overflow-hidden">
+
+        <nav id="navbar" class="w-full transition-all duration-300 bg-transparent py-5 border-b border-transparent">
+            <div class="container mx-auto px-6 flex justify-between items-center">
+                <a href="#" class="flex items-center gap-3 group">
+                    <i class="fas fa-kaaba text-brand-cyan text-2xl group-hover:scale-110 transition-transform"></i>
+                    <h1 class="text-xl font-extrabold text-brand-dark tracking-tight shadow-sm md:shadow-none bg-white/80 md:bg-transparent px-2 md:px-0 rounded backdrop-blur-sm md:backdrop-blur-none">Haramain <span class="text-brand-cyan">Private</span></h1>
+                </a>
+                
+                <div class="hidden lg:flex space-x-8 text-sm font-semibold text-gray-400 drop-shadow-md">
+                    <a href="#hero" class="hover:text-brand-cyan transition"><span class="lang-id">Beranda</span><span class="lang-jp hidden">ホーム</span></a>
+                    <a href="#edukasi" class="hover:text-brand-cyan transition"><span class="lang-id">Panduan</span><span class="lang-jp hidden">ガイド</span></a>
+                    <a href="#komparasi" class="hover:text-brand-cyan transition"><span class="lang-id">Keunggulan</span><span class="lang-jp hidden">メリット</span></a>
+                    <a href="#faq" class="hover:text-brand-cyan transition"><span class="lang-id">FAQ</span><span class="lang-jp hidden">よくある質問</span></a>
+                    <a href="#galeri" class="hover:text-brand-cyan transition"><span class="lang-id">Galeri</span><span class="lang-jp hidden">ギャラリー</span></a>
+                    <a href="#alur" class="hover:text-brand-cyan transition"><span class="lang-id">Alur</span><span class="lang-jp hidden">手順</span></a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button id="lang-toggle" class="text-xs md:text-sm font-bold text-gray-600 bg-white/80 backdrop-blur-sm hover:text-brand-dark transition border border-gray-200 px-3 py-1 rounded-full">
+                        ID | 日本語
+                    </button>
+                    <a href="#daftar" class="hidden md:flex bg-brand-cyan text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#0096D1] transition shadow-md">
+                        <span class="lang-id">Konsultasi</span><span class="lang-jp hidden">相談する</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" class="relative pt-48 lg:pt-56 pb-40 lg:pb-56 overflow-hidden">
         <div class="absolute inset-0 z-0 bg-brand-dark">
             <img src="assets/img/hero-bg.jpeg" alt="Background" class="w-full h-full object-cover opacity-30 mix-blend-overlay"> 
         </div>
@@ -151,7 +156,7 @@
                     <h5 class="text-2xl font-bold text-brand-dark mb-3">Ihram dari Miqat</h5>
                     <p class="text-gray-600 leading-relaxed mb-4">Berniat memulai ibadah umroh dari batas tempat (Miqat) yang telah ditentukan. Bagi laki-laki wajib memakai 2 helai kain ihram tanpa jahitan. Mulai saat ini, berlakulah larangan-larangan ihram.</p>
                     <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                        <p class="font-arabic text-xl text-right text-brand-cyan mb-2">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</p>
+                        <p class="font-arabic text-xl text-right text-brand-cyan mb-2">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</p>
                         <p class="text-sm italic text-gray-500">"Aku penuhi panggilan-Mu ya Allah untuk melaksanakan umroh."</p>
                     </div>
                 </div>
@@ -170,7 +175,8 @@
             </div>
         </div>
     </section>
-<section class="py-24 bg-white fade-in" id="komparasi">
+
+    <section class="py-24 bg-white fade-in" id="komparasi">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-16">
                 <h3 class="text-xs font-bold text-brand-cyan tracking-widest uppercase mb-2"><span class="lang-id">Keunggulan Layanan</span><span class="lang-jp hidden">サービスのメリット</span></h3>
@@ -200,7 +206,7 @@
                 <div class="grid grid-cols-3 border-b border-gray-50 hover:bg-gray-50 transition">
                     <div class="p-4 md:p-6 text-sm md:text-base font-medium text-brand-dark flex items-center">Bimbingan Muthawwif</div>
                     <div class="p-4 md:p-6 text-center text-gray-400 text-sm flex items-center justify-center">1 Ustadz untuk 40+ Jamaah</div>
-                    <div class="p-4 md:p-6 text-center text-brand-dark font-bold text-sm bg-blue-50/30 flex items-center justify-center text-brand-cyan">Eksklusif (Fokus Keluarga Anda)</div>
+                    <div class="p-4 md:p-6 text-center text-brand-dark font-bold text-sm bg-blue-50/30 flex items-center justify-center text-brand-cyan">Eksklusif (Fokus Keluarga)</div>
                 </div>
 
                 <div class="grid grid-cols-3 hover:bg-gray-50 transition">
@@ -224,9 +230,7 @@
                     <summary class="flex justify-between items-center font-bold text-brand-dark text-lg outline-none">
                         <span class="lang-id">Apakah pemegang Zairyu Card (Visa Kerja/Pelajar) bisa umroh dari Jepang?</span>
                         <span class="lang-jp hidden">在留カード保持者は日本からウムラに行けますか？</span>
-                        <span class="transition group-open:rotate-180">
-                            <i class="fas fa-chevron-down text-brand-cyan"></i>
-                        </span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-cyan"></i></span>
                     </summary>
                     <p class="text-gray-500 mt-4 leading-relaxed text-sm md:text-base border-t border-gray-50 pt-4">
                         <span class="lang-id">Sangat bisa. Kami akan memandu secara penuh pengurusan Tourist e-Visa atau Visa Umroh khusus menyesuaikan dengan paspor Indonesia Anda dan status domisili di Jepang. Prosesnya cepat dan transparan.</span>
@@ -238,9 +242,7 @@
                     <summary class="flex justify-between items-center font-bold text-brand-dark text-lg outline-none">
                         <span class="lang-id">Berapa lama estimasi cuti kerja yang harus saya siapkan?</span>
                         <span class="lang-jp hidden">どれくらいの休暇を準備する必要がありますか？</span>
-                        <span class="transition group-open:rotate-180">
-                            <i class="fas fa-chevron-down text-brand-cyan"></i>
-                        </span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-cyan"></i></span>
                     </summary>
                     <p class="text-gray-500 mt-4 leading-relaxed text-sm md:text-base border-t border-gray-50 pt-4">
                         <span class="lang-id">Keunggulan Haramain Private adalah fleksibilitas. Jika cuti Anda terbatas, kami bisa merancang paket singkat (misal: 7 hari atau 9 hari perjalanan) agar tidak mengganggu tanggung jawab Anda di perusahaan (Kaisha).</span>
@@ -252,9 +254,7 @@
                     <summary class="flex justify-between items-center font-bold text-brand-dark text-lg outline-none">
                         <span class="lang-id">Apakah ada kajian manasik sebelum keberangkatan?</span>
                         <span class="lang-jp hidden">出発前にマナシク（事前学習）はありますか？</span>
-                        <span class="transition group-open:rotate-180">
-                            <i class="fas fa-chevron-down text-brand-cyan"></i>
-                        </span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-cyan"></i></span>
                     </summary>
                     <p class="text-gray-500 mt-4 leading-relaxed text-sm md:text-base border-t border-gray-50 pt-4">
                         <span class="lang-id">Tentu. Edukasi ibadah adalah prioritas kami. Kami menyediakan sesi manasik eksklusif (online via Zoom atau tatap muka jika memungkinkan) yang dibimbing langsung oleh Asatidzah bermanhaj lurus sesuai tuntunan Rasulullah ﷺ.</span>
@@ -264,6 +264,7 @@
             </div>
         </div>
     </section>
+
     <section class="py-24 bg-white fade-in" id="galeri">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 max-w-3xl mx-auto">
@@ -338,11 +339,11 @@
             <div class="mb-10 text-center">
                 <h3 class="text-3xl font-extrabold text-brand-dark mb-3 tracking-tight"><span class="lang-id">Formulir Konsultasi & Layanan</span><span class="lang-jp hidden">相談とサービスフォーム</span></h3>
                 <p class="text-gray-500"><span class="lang-id">Pilih Paket Full Service atau custom sesuai kebutuhan Anda.</span><span class="lang-jp hidden">フルサービスまたはご希望のパッケージをお選びください。</span></p>
-           <p class="text-brand-orange mt-2 text-sm font-semibold bg-orange-50 inline-block px-4 py-1 rounded-full border border-orange-100">
+                <p class="text-brand-orange mt-2 text-sm font-semibold bg-orange-50 inline-block px-4 py-1 rounded-full border border-orange-100">
                     <i class="fas fa-info-circle mr-1"></i> <span class="lang-id">Demi menjaga kualitas bimbingan, kami hanya membatasi pelayanan maksimal 5 Keluarga per bulan.</span><span class="lang-jp hidden">案内の質を保つため、毎月最大5家族までのサービスに限定しています。</span>
                 </p>
             </div>
-           
+            
             <form id="formPendaftaran" class="space-y-8">
                 <input type="hidden" name="action" value="custom_package">
                 
