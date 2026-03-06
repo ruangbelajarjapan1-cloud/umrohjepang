@@ -29,20 +29,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 2. TOGGLE BAHASA (ID/JP)
+    // 2. TOGGLE BAHASA (ID / EN) - SUDAH DIPERBAIKI
     const langBtn = document.getElementById('lang-toggle');
     const elementsId = document.querySelectorAll('.lang-id');
-    const elementsJp = document.querySelectorAll('.lang-jp');
+    const elementsEn = document.querySelectorAll('.lang-en'); // Menggunakan class .lang-en
     let currentLang = 'id';
 
     if (langBtn) {
         langBtn.addEventListener('click', () => {
             if (currentLang === 'id') {
                 elementsId.forEach(el => el.classList.add('hidden'));
-                elementsJp.forEach(el => el.classList.remove('hidden'));
-                currentLang = 'jp';
+                elementsEn.forEach(el => el.classList.remove('hidden'));
+                currentLang = 'en';
             } else {
-                elementsJp.forEach(el => el.classList.add('hidden'));
+                elementsEn.forEach(el => el.classList.add('hidden'));
                 elementsId.forEach(el => el.classList.remove('hidden'));
                 currentLang = 'id';
             }
@@ -81,14 +81,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const nama = formData.get('nama');
             let layananDipilih = [];
             
-            if(formData.get('layanan_full')) layananDipilih.push("Paket Lengkap (Full Service)");
+            if(formData.get('layanan_reguler')) layananDipilih.push("Paket Reguler (Grup Hemat)");
+            if(formData.get('layanan_full')) layananDipilih.push("Paket Private (Keluarga)");
             if(formData.get('layanan_visa')) layananDipilih.push("Jasa Visa Saja");
             if(formData.get('layanan_transport')) layananDipilih.push("Sewa Mobil VIP");
             if(formData.get('layanan_muthawwif')) layananDipilih.push("Jasa Muthawwif");
             
             const catatan = formData.get('catatan') ? formData.get('catatan') : "-";
             
-            let textWA = `Bismillah. Assalamu'alaikum.\n\nAdmin Haramain Private, saya *${nama}* ingin konsultasi.\n\nSaya tertarik dengan layanan:\n- ${layananDipilih.length > 0 ? layananDipilih.join('\n- ') : 'Konsultasi Umum'}\n\nCatatan Tambahan: ${catatan}\n\nMohon informasi langkah selanjutnya. Jazakumullah khairan.`;
+            // Note: Pesan WhatsApp dibiarkan berbahasa Indonesia karena tujuannya ke Admin Anda
+            let textWA = `Bismillah. Assalamu'alaikum.\n\nAdmin Haramain, saya *${nama}* ingin konsultasi.\n\nSaya tertarik dengan layanan:\n- ${layananDipilih.length > 0 ? layananDipilih.join('\n- ') : 'Konsultasi Umum'}\n\nCatatan Tambahan: ${catatan}\n\nMohon informasi langkah selanjutnya. Jazakumullah khairan.`;
             
             const encodedTextWA = encodeURIComponent(textWA);
             const waNumber = "818088452258"; 
@@ -101,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="text-center py-10 animate-fade">
                         <i class="fas fa-check-circle text-6xl text-brand-cyan mb-4"></i>
                         <h4 class="text-2xl font-bold text-brand-dark mb-2">Permintaan Terkirim!</h4>
-                        <p class="text-gray-500 mb-6">Mengarahkan Anda otomatis ke WhatsApp Admin...</p>
+                        <p class="text-gray-500 mb-6">Mengarahkan otomatis ke WhatsApp Admin / Redirecting to WhatsApp...</p>
                         <a href="${waLink}" target="_blank" class="inline-block bg-[#25D366] text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transition">Lanjutkan ke WhatsApp</a>
                     </div>
                 `;
@@ -111,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }, 2000);
 
             } catch (error) {
-                alert('Terdapat kendala jaringan. Silakan hubungi kami langsung melalui tombol Chat Admin.');
+                alert('Terdapat kendala jaringan. Silakan hubungi kami langsung melalui tombol WhatsApp.');
                 btnSubmit.innerHTML = originalText;
                 btnSubmit.disabled = false;
             }
@@ -119,30 +121,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 7. WIDGET LIVE HARAMAIN (WAKTU & CUACA)
-    // Fungsi ini dipanggil secara otomatis saat web dimuat
     function initHaramainWidget() {
         const timeMakkah = document.getElementById('time-makkah');
         const timeMadinah = document.getElementById('time-madinah');
         const tempMakkah = document.getElementById('temp-makkah');
         const tempMadinah = document.getElementById('temp-madinah');
 
-        // A. Update Jam Live (Zona Waktu Arab Saudi)
         setInterval(() => {
             const options = { timeZone: 'Asia/Riyadh', hour: '2-digit', minute:'2-digit', hour12: false };
-            const timeString = new Intl.DateTimeFormat('id-ID', options).format(new Date());
+            const timeString = new Intl.DateTimeFormat('en-US', options).format(new Date());
             if(timeMakkah) timeMakkah.innerText = timeString;
             if(timeMadinah) timeMadinah.innerText = timeString;
         }, 1000);
 
-        // B. Ambil Data Cuaca Menggunakan Open-Meteo API (Gratis, Tanpa Key)
         async function fetchWeather() {
             try {
-                // Koordinat Makkah (21.4225, 39.8262)
                 const resMakkah = await fetch('https://api.open-meteo.com/v1/forecast?latitude=21.4225&longitude=39.8262&current_weather=true');
                 const dataMakkah = await resMakkah.json();
                 if(tempMakkah) tempMakkah.innerText = `${Math.round(dataMakkah.current_weather.temperature)}°C`;
                 
-                // Koordinat Madinah (24.4686, 39.6142)
                 const resMadinah = await fetch('https://api.open-meteo.com/v1/forecast?latitude=24.4686&longitude=39.6142&current_weather=true');
                 const dataMadinah = await resMadinah.json();
                 if(tempMadinah) tempMadinah.innerText = `${Math.round(dataMadinah.current_weather.temperature)}°C`;
@@ -152,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         fetchWeather();
     }
-    initHaramainWidget(); // Jalankan fungsi
+    initHaramainWidget();
 
 });
 
