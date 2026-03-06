@@ -36,7 +36,6 @@
 <body class="bg-brand-bg text-brand-dark transition-colors duration-300 font-sans">
 
     <header class="fixed w-full top-0 left-0 z-50 flex flex-col transition-all duration-300">
-        
         <div id="top-banner" class="bg-brand-cyan text-white py-2 px-4 text-center text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 overflow-hidden opacity-100 origin-top h-auto">
             <span class="lang-id">📅 Persiapkan ibadah Anda untuk libur <span class="font-extrabold text-brand-dark bg-white/20 px-2 py-0.5 rounded">Golden Week</span> & <span class="font-extrabold text-brand-dark bg-white/20 px-2 py-0.5 rounded">Nenmatsu Nenshi</span>. Kuota Private sangat terbatas!</span>
             <span class="lang-jp hidden">📅 ゴールデンウィークと年末年始の礼拝の準備をしましょう。プライベート枠には限りがあります！</span>
@@ -102,7 +101,36 @@
         </div>
     </section>
 
-    <section class="relative z-20 -mt-20 mb-16 fade-in px-6">
+    <div class="container mx-auto px-6 relative z-20 -mt-24 mb-6 fade-in">
+        <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-4 md:p-6 flex flex-col md:flex-row justify-around items-center divide-y md:divide-y-0 md:divide-x divide-gray-200">
+            <div class="flex items-center gap-5 px-6 py-3 md:py-0 w-full justify-center group">
+                <i class="fas fa-kaaba text-brand-cyan text-4xl group-hover:scale-110 transition"></i>
+                <div class="text-left">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Makkah Al-Mukarramah</p>
+                    <p class="text-2xl font-extrabold text-brand-dark flex items-center gap-2">
+                        <span id="time-makkah">--:--</span> 
+                        <span class="text-lg font-medium text-gray-400 border-l border-gray-300 pl-2 flex items-center gap-1">
+                            <i class="fas fa-sun text-brand-orange text-sm"></i> <span id="temp-makkah">--°C</span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-5 px-6 py-3 md:py-0 w-full justify-center group">
+                <i class="fas fa-mosque text-brand-cyan text-4xl group-hover:scale-110 transition"></i>
+                <div class="text-left">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Madinah Al-Munawwarah</p>
+                    <p class="text-2xl font-extrabold text-brand-dark flex items-center gap-2">
+                        <span id="time-madinah">--:--</span> 
+                        <span class="text-lg font-medium text-gray-400 border-l border-gray-300 pl-2 flex items-center gap-1">
+                            <i class="fas fa-sun text-brand-orange text-sm"></i> <span id="temp-madinah">--°C</span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="relative z-20 mb-16 fade-in px-6">
         <div class="container mx-auto max-w-5xl bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 flex flex-col md:flex-row items-center justify-between border-t-4 border-brand-orange gap-6">
             <div class="flex items-center gap-5">
                 <div class="bg-orange-50 w-14 h-14 rounded-full flex items-center justify-center text-brand-orange shrink-0">
@@ -274,19 +302,17 @@
             
             <div class="swiper mySwiper max-w-6xl mx-auto pb-16">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a1.jpeg', 'Brosur Layanan 1')">
+                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a1.jpeg')">
                         <div class="w-full h-[450px] md:h-[650px] bg-brand-bg rounded-[2rem] border border-gray-100 shadow-sm flex items-center justify-center p-4 md:p-8 hover:shadow-xl transition-all duration-500">
                             <img src="assets/img/a1.jpeg" class="w-full h-full object-contain drop-shadow-md hover:scale-[1.02] transition-transform duration-500" alt="Brosur 1">
                         </div>
                     </div>
-
-                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a2.jpeg', 'Brosur Layanan 2')">
+                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a2.jpeg')">
                         <div class="w-full h-[450px] md:h-[650px] bg-brand-bg rounded-[2rem] border border-gray-100 shadow-sm flex items-center justify-center p-4 md:p-8 hover:shadow-xl transition-all duration-500">
                             <img src="assets/img/a2.jpeg" class="w-full h-full object-contain drop-shadow-md hover:scale-[1.02] transition-transform duration-500" alt="Brosur 2">
                         </div>
                     </div>
-
-                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a3.jpeg', 'Brosur Layanan 3')">
+                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a3.jpeg')">
                         <div class="w-full h-[450px] md:h-[650px] bg-brand-bg rounded-[2rem] border border-gray-100 shadow-sm flex items-center justify-center p-4 md:p-8 hover:shadow-xl transition-all duration-500">
                             <img src="assets/img/a3.jpeg" class="w-full h-full object-contain drop-shadow-md hover:scale-[1.02] transition-transform duration-500" alt="Brosur 3">
                         </div>
