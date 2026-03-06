@@ -12,18 +12,9 @@
             theme: {
                 extend: {
                     colors: { 
-                        // Palet Modern Hekinan Style
-                        brand: {
-                            cyan: '#00AEEF',   /* Biru cerah elegan */
-                            orange: '#F58220', /* Oranye atraktif untuk Call to Action */
-                            dark: '#1E293B',   /* Slate gelap untuk teks (lebih soft dari hitam) */
-                            bg: '#F8FAFC'      /* Background super bersih */
-                        }
+                        brand: { cyan: '#00AEEF', orange: '#F58220', dark: '#1E293B', bg: '#F8FAFC' }
                     },
-                    fontFamily: { 
-                        sans: ['Inter', 'sans-serif'], 
-                        arabic: ['"Amiri"', 'serif'] 
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], arabic: ['"Amiri"', 'serif'] }
                 }
             }
         }
@@ -33,11 +24,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
 </head>
-<body class="bg-brand-bg text-brand-dark transition-colors duration-300">
+<body class="bg-brand-bg text-brand-dark transition-colors duration-300 font-sans">
 
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm py-4 border-b border-gray-100">
         <div class="container mx-auto px-6 flex justify-between items-center">
@@ -47,14 +35,17 @@
             </a>
             
             <div class="hidden lg:flex space-x-10 text-sm font-semibold text-gray-500">
-                <a href="#hero" class="hover:text-brand-cyan transition duration-300">Beranda</a>
-                <a href="#layanan" class="hover:text-brand-cyan transition duration-300">Layanan</a>
-                <a href="#galeri" class="hover:text-brand-cyan transition duration-300">Galeri & Brosur</a>
+                <a href="#hero" class="hover:text-brand-cyan transition"><span class="lang-id">Beranda</span><span class="lang-jp hidden">ホーム</span></a>
+                <a href="#edukasi" class="hover:text-brand-cyan transition"><span class="lang-id">Panduan</span><span class="lang-jp hidden">ガイド</span></a>
+                <a href="#layanan" class="hover:text-brand-cyan transition"><span class="lang-id">Layanan</span><span class="lang-jp hidden">サービス</span></a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="https://wa.me/818088452258?text=Bismillah.%20Assalamu%27alaikum.%20Admin%20Haramain%20Private,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Umroh%20dari%20Jepang." target="_blank" class="hidden md:flex bg-brand-cyan text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#0096D1] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
-                    <i class="fab fa-whatsapp mr-2 text-lg"></i> Konsultasi
+                <button id="lang-toggle" class="text-sm font-bold text-gray-400 hover:text-brand-dark transition border border-gray-200 px-3 py-1 rounded-full">
+                    ID | 日本語
+                </button>
+                <a href="#daftar" class="hidden md:flex bg-brand-cyan text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#0096D1] transition shadow-md">
+                    <span class="lang-id">Konsultasi</span><span class="lang-jp hidden">相談する</span>
                 </a>
             </div>
         </div>
@@ -62,180 +53,156 @@
 
     <section id="hero" class="relative pt-32 pb-40 lg:pt-48 lg:pb-56 overflow-hidden">
         <div class="absolute inset-0 z-0 bg-brand-dark">
-            <img src="assets/img/hero-bg.jpeg" alt="Latar Belakang" class="w-full h-full object-cover opacity-30 mix-blend-overlay"> 
+            <img src="assets/img/hero-bg.jpeg" alt="Background" class="w-full h-full object-cover opacity-30 mix-blend-overlay"> 
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-6 shadow-sm">
-                    <i class="fas fa-plane-departure text-brand-cyan"></i> KEBERANGKATAN DARI JEPANG
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-6">
+                    <i class="fas fa-plane-departure text-brand-cyan"></i> 
+                    <span class="lang-id">KEBERANGKATAN DARI JEPANG</span><span class="lang-jp hidden">日本からの出発</span>
                 </div>
                 
                 <h2 class="text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-white leading-[1.1] mb-6 tracking-tight drop-shadow-lg">
-                    Layanan Eksklusif,<br>
-                    <span class="text-brand-cyan">Sesuai Tuntunan Rasulullah ﷺ.</span>
+                    <span class="lang-id">Layanan Eksklusif,</span><span class="lang-jp hidden">専用サービス、</span><br>
+                    <span class="text-brand-cyan lang-id">Sesuai Tuntunan Rasulullah ﷺ.</span>
+                    <span class="text-brand-cyan lang-jp hidden">預言者の教えに従って。</span>
                 </h2>
                 
                 <p class="text-base md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed font-light">
-                    Fokus ibadah tanpa kendala teknis. Kami menyediakan layanan Umroh Private, Jasa Visa, hingga pendampingan Muthawwif untuk kenyamanan ibadah keluarga Anda.
+                    <span class="lang-id">Fokus ibadah tanpa kendala teknis. Kami menyediakan layanan Umroh Private, Jasa Visa, hingga pendampingan Muthawwif untuk kenyamanan keluarga Anda.</span>
+                    <span class="lang-jp hidden">技術的な問題なく礼拝に集中。ご家族の快適なウムラのために、専用ビザ手配からガイド同行までサポートします。</span>
                 </p>
                 
                 <div class="flex flex-wrap gap-4">
-                    <a href="#daftar" class="bg-brand-orange text-white px-8 py-4 rounded-full font-bold hover:bg-[#E06D10] transition-all flex items-center gap-2 shadow-[0_10px_20px_rgba(245,130,32,0.3)] hover:-translate-y-1">
-                        Form Pendaftaran
-                    </a>
-                    <a href="https://wa.me/818088452258?text=Bismillah.%20Assalamu%27alaikum.%20Admin%20Haramain%20Private,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Umroh%20dari%20Jepang." target="_blank" class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-dark transition-all flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-xl"></i> Chat Admin
+                    <a href="#daftar" class="bg-brand-orange text-white px-8 py-4 rounded-full font-bold hover:bg-[#E06D10] transition-all flex items-center gap-2 shadow-lg hover:-translate-y-1">
+                        <span class="lang-id">Buat Paket Anda</span><span class="lang-jp hidden">パッケージを作成</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container mx-auto px-6 relative z-20 -mt-20 mb-20 fade-in">
-        <div class="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between border-t-4 border-brand-cyan gap-8">
-            <div class="flex items-start gap-5">
-                <div class="bg-blue-50/80 w-14 h-14 rounded-full flex items-center justify-center text-brand-cyan shrink-0 shadow-inner">
-                    <i class="fas fa-book-open text-2xl"></i>
+    <section class="relative z-20 -mt-20 mb-20 fade-in px-6">
+        <div class="container mx-auto max-w-5xl bg-white rounded-3xl shadow-xl p-8 flex flex-col md:flex-row items-center justify-between border-t-4 border-brand-orange gap-6">
+            <div class="flex items-center gap-4">
+                <div class="bg-orange-50 w-14 h-14 rounded-full flex items-center justify-center text-brand-orange shrink-0">
+                    <i class="fas fa-file-pdf text-2xl"></i>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-brand-cyan tracking-widest uppercase mb-1.5">Mutiara Hadits</h3>
-                    <p class="text-gray-700 italic font-medium text-base md:text-lg leading-relaxed">"Umroh ke umroh berikutnya adalah penghapus dosa di antara keduanya..."</p>
-                    <p class="text-xs text-gray-400 mt-2 font-bold tracking-wider">HR. BUKHARI & MUSLIM</p>
+                    <h3 class="font-bold text-brand-dark text-lg"><span class="lang-id">Buku Saku & Checklist Umroh</span><span class="lang-jp hidden">ウムラ準備チェックリスト</span></h3>
+                    <p class="text-sm text-gray-500"><span class="lang-id">Persiapan keberangkatan khusus dari Jepang.</span><span class="lang-jp hidden">日本発の特別な出発準備ガイド。</span></p>
                 </div>
             </div>
-            <div class="text-3xl md:text-4xl font-arabic text-brand-dark text-right w-full md:w-auto leading-loose opacity-90">
-                العُمْرَةُ إِلَى العُمْرَةِ كَفَّارَةٌ لِمَا بَيْنَهُمَا
-            </div>
+            <a href="https://wa.me/818088452258?text=Assalamu%27alaikum.%20Boleh%20minta%20file%20PDF%20Buku%20Saku%20Checklist%20Umroh%3F" target="_blank" class="bg-gray-100 hover:bg-gray-200 text-brand-dark font-bold py-3 px-6 rounded-xl transition flex items-center gap-2 w-full md:w-auto justify-center">
+                <i class="fas fa-download"></i> <span class="lang-id">Download Gratis</span><span class="lang-jp hidden">無料ダウンロード</span>
+            </a>
         </div>
-    </div>
+    </section>
 
-    <section class="py-16 bg-brand-bg fade-in" id="layanan">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h4 class="text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">Solusi Perjalanan Anda</h4>
-                <p class="text-gray-500 mt-3 text-lg">Sesuaikan kebutuhan perjalanan ibadah Anda bersama kami.</p>
+    <section class="py-16 bg-brand-bg fade-in" id="edukasi">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h4 class="text-3xl font-extrabold text-brand-dark tracking-tight"><span class="lang-id">Tata Cara Umroh</span><span class="lang-jp hidden">ウムラの儀式</span></h4>
+                <p class="text-gray-500 mt-2"><span class="lang-id">Memahami 4 rukun ibadah Umroh sesuai sunnah.</span><span class="lang-jp hidden">スンナに基づく4つの基本儀式。</span></p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-2xl hover:border-brand-cyan/30 transition-all duration-500 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-cyan transition-colors duration-500">
-                        <i class="fas fa-passport text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                <button onclick="showRukun('ihram')" class="rukun-btn active bg-brand-cyan text-white px-6 py-3 rounded-full font-bold shadow-md transition-all text-sm md:text-base">1. Ihram</button>
+                <button onclick="showRukun('thawaf')" class="rukun-btn bg-white text-gray-500 hover:bg-gray-50 border border-gray-200 px-6 py-3 rounded-full font-bold transition-all text-sm md:text-base">2. Thawaf</button>
+                <button onclick="showRukun('sai')" class="rukun-btn bg-white text-gray-500 hover:bg-gray-50 border border-gray-200 px-6 py-3 rounded-full font-bold transition-all text-sm md:text-base">3. Sa'i</button>
+                <button onclick="showRukun('tahallul')" class="rukun-btn bg-white text-gray-500 hover:bg-gray-50 border border-gray-200 px-6 py-3 rounded-full font-bold transition-all text-sm md:text-base">4. Tahallul</button>
+            </div>
+
+            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 min-h-[250px] relative overflow-hidden">
+                <div id="content-ihram" class="rukun-content block animate-fade">
+                    <h5 class="text-2xl font-bold text-brand-dark mb-3">Ihram dari Miqat</h5>
+                    <p class="text-gray-600 leading-relaxed mb-4">Berniat memulai ibadah umroh dari batas tempat (Miqat) yang telah ditentukan. Bagi laki-laki wajib memakai 2 helai kain ihram tanpa jahitan. Mulai saat ini, berlakulah larangan-larangan ihram.</p>
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                        <p class="font-arabic text-xl text-right text-brand-cyan mb-2">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</p>
+                        <p class="text-sm italic text-gray-500">"Aku penuhi panggilan-Mu ya Allah untuk melaksanakan umroh."</p>
                     </div>
-                    <h5 class="text-2xl font-bold text-brand-dark mb-3">Visa & Dokumen</h5>
-                    <p class="text-gray-500 text-base leading-relaxed">Pengurusan Visa Umroh cepat dan resmi untuk pemegang residence card Jepang.</p>
                 </div>
-                <div class="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-2xl hover:border-brand-orange/30 transition-all duration-500 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-orange transition-colors duration-500">
-                        <i class="fas fa-bus text-3xl text-brand-orange group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h5 class="text-2xl font-bold text-brand-dark mb-3">Transportasi VIP</h5>
-                    <p class="text-gray-500 text-base leading-relaxed">Sewa mobil pribadi atau bus eksekutif selama di Saudi untuk kenyamanan keluarga.</p>
+                <div id="content-thawaf" class="rukun-content hidden animate-fade">
+                    <h5 class="text-2xl font-bold text-brand-dark mb-3">Thawaf Mengelilingi Ka'bah</h5>
+                    <p class="text-gray-600 leading-relaxed mb-4">Mengelilingi Ka'bah sebanyak 7 putaran, dimulai dari sejajar Hajar Aswad dan posisi Ka'bah berada di sebelah kiri. Disunnahkan berlari kecil pada 3 putaran pertama bagi laki-laki.</p>
                 </div>
-                <div class="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-2xl hover:border-brand-cyan/30 transition-all duration-500 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-cyan transition-colors duration-500">
-                        <i class="fas fa-user-check text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h5 class="text-2xl font-bold text-brand-dark mb-3">Muthawwif Private</h5>
-                    <p class="text-gray-500 text-base leading-relaxed">Pendampingan ibadah penuh oleh Ustadz/Muthawwif selama di tanah suci.</p>
+                <div id="content-sai" class="rukun-content hidden animate-fade">
+                    <h5 class="text-2xl font-bold text-brand-dark mb-3">Sa'i antara Shofa & Marwah</h5>
+                    <p class="text-gray-600 leading-relaxed mb-4">Berjalan dari bukit Shofa ke bukit Marwah sebanyak 7 kali perjalanan. Berangkat dihitung 1 kali, kembali dihitung 1 kali. Disunnahkan berlari-lari kecil di antara dua lampu hijau bagi laki-laki.</p>
+                </div>
+                <div id="content-tahallul" class="rukun-content hidden animate-fade">
+                    <h5 class="text-2xl font-bold text-brand-dark mb-3">Tahallul (Bercukur)</h5>
+                    <p class="text-gray-600 leading-relaxed mb-4">Rukun penutup umroh. Bagi laki-laki disunnahkan mencukur habis rambut kepala (tahliq) atau memendekkannya. Bagi wanita cukup memotong rambut seujung jari. Dengan ini, seluruh larangan ihram telah gugur.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-white fade-in" id="galeri">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 max-w-3xl mx-auto">
-                <h4 class="text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">Galeri & Brosur</h4>
-                <p class="text-gray-500 mt-4 text-lg">Informasi program dan dokumentasi layanan kami.</p>
-            </div>
-            
-            <div class="swiper mySwiper max-w-6xl mx-auto pb-16">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a1.jpeg', 'Brosur Layanan 1')">
-                        <div class="w-full h-[450px] md:h-[650px] bg-brand-bg rounded-[2rem] border border-gray-100 shadow-sm flex items-center justify-center p-4 md:p-8 hover:shadow-xl transition-all duration-500">
-                            <img src="assets/img/a1.jpeg" class="w-full h-full object-contain drop-shadow-md hover:scale-[1.02] transition-transform duration-500" alt="Brosur 1">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a2.jpeg', 'Brosur Layanan 2')">
-                        <div class="w-full h-[450px] md:h-[650px] bg-brand-bg rounded-[2rem] border border-gray-100 shadow-sm flex items-center justify-center p-4 md:p-8 hover:shadow-xl transition-all duration-500">
-                            <img src="assets/img/a2.jpeg" class="w-full h-full object-contain drop-shadow-md hover:scale-[1.02] transition-transform duration-500" alt="Brosur 2">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide cursor-pointer px-4" onclick="openModal('assets/img/a3.jpeg', 'Brosur Layanan 3')">
-                        <div class="w-full h-[450px] md:h-[650px] bg-brand-bg rounded-[2rem] border border-gray-100 shadow-sm flex items-center justify-center p-4 md:p-8 hover:shadow-xl transition-all duration-500">
-                            <img src="assets/img/a3.jpeg" class="w-full h-full object-contain drop-shadow-md hover:scale-[1.02] transition-transform duration-500" alt="Brosur 3">
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 px-4 md:px-6 bg-brand-bg fade-in" id="daftar">
-        <div class="max-w-4xl mx-auto bg-white p-8 md:p-14 rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-cyan to-brand-orange"></div>
-            
-            <div class="mb-12 text-center">
-                <h3 class="text-3xl font-extrabold text-brand-dark mb-3 tracking-tight">Formulir Konsultasi</h3>
-                <p class="text-gray-500 text-lg">Silakan isi data, admin kami akan merespon dengan cepat.</p>
+    <section class="py-24 px-4 md:px-6 bg-white fade-in" id="daftar">
+        <div class="max-w-4xl mx-auto bg-brand-bg p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-gray-200 relative">
+            <div class="mb-10 text-center">
+                <h3 class="text-3xl font-extrabold text-brand-dark mb-3 tracking-tight"><span class="lang-id">Rancang Paket Anda</span><span class="lang-jp hidden">パッケージをカスタマイズ</span></h3>
+                <p class="text-gray-500"><span class="lang-id">Pilih layanan yang Anda butuhkan (bisa lebih dari satu).</span><span class="lang-jp hidden">必要なサービスを選択してください（複数可）。</span></p>
             </div>
             
             <form id="formPendaftaran" class="space-y-8">
-                <input type="hidden" name="action" value="register">
+                <input type="hidden" name="action" value="custom_package">
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <label class="cursor-pointer relative">
+                        <input type="checkbox" name="layanan_visa" value="Ya" class="peer sr-only">
+                        <div class="p-5 rounded-2xl border-2 border-gray-200 bg-white hover:bg-gray-50 peer-checked:border-brand-cyan peer-checked:bg-blue-50 transition-all text-center">
+                            <i class="fas fa-passport text-2xl text-gray-400 peer-checked:text-brand-cyan mb-2 block transition-colors"></i>
+                            <span class="font-bold text-brand-dark block text-sm">Jasa Visa Umroh</span>
+                        </div>
+                        <div class="absolute top-3 right-3 hidden peer-checked:block text-brand-cyan"><i class="fas fa-check-circle"></i></div>
+                    </label>
+
+                    <label class="cursor-pointer relative">
+                        <input type="checkbox" name="layanan_transport" value="Ya" class="peer sr-only">
+                        <div class="p-5 rounded-2xl border-2 border-gray-200 bg-white hover:bg-gray-50 peer-checked:border-brand-cyan peer-checked:bg-blue-50 transition-all text-center">
+                            <i class="fas fa-car text-2xl text-gray-400 peer-checked:text-brand-cyan mb-2 block transition-colors"></i>
+                            <span class="font-bold text-brand-dark block text-sm">Transportasi VIP</span>
+                        </div>
+                        <div class="absolute top-3 right-3 hidden peer-checked:block text-brand-cyan"><i class="fas fa-check-circle"></i></div>
+                    </label>
+
+                    <label class="cursor-pointer relative">
+                        <input type="checkbox" name="layanan_muthawwif" value="Ya" class="peer sr-only">
+                        <div class="p-5 rounded-2xl border-2 border-gray-200 bg-white hover:bg-gray-50 peer-checked:border-brand-cyan peer-checked:bg-blue-50 transition-all text-center">
+                            <i class="fas fa-user-tie text-2xl text-gray-400 peer-checked:text-brand-cyan mb-2 block transition-colors"></i>
+                            <span class="font-bold text-brand-dark block text-sm">Muthawwif Private</span>
+                        </div>
+                        <div class="absolute top-3 right-3 hidden peer-checked:block text-brand-cyan"><i class="fas fa-check-circle"></i></div>
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Nama Lengkap</label>
-                        <input type="text" name="nama" required class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-cyan focus:bg-white focus:outline-none transition-all">
+                        <input type="text" name="nama" required class="w-full p-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-cyan focus:outline-none transition">
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">No. WhatsApp</label>
-                        <input type="tel" name="telepon" required class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-cyan focus:bg-white focus:outline-none transition-all">
+                        <input type="tel" name="telepon" required class="w-full p-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-cyan focus:outline-none transition">
                     </div>
                 </div>
                 
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Pilihan Layanan</label>
-                    <div class="relative">
-                        <select name="paket" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-cyan focus:bg-white focus:outline-none appearance-none cursor-pointer font-medium text-brand-dark">
-                            <option value="Paket Umroh Private">Paket Lengkap Umroh Private</option>
-                            <option value="Jasa Visa Saja">Jasa Pengurusan Visa Saja</option>
-                            <option value="Sewa Transportasi">Sewa Transportasi Saudi</option>
-                            <option value="Jasa Muthawwif">Jasa Pendampingan Muthawwif</option>
-                        </select>
-                        <i class="fas fa-chevron-down absolute right-5 top-5 text-gray-400 pointer-events-none"></i>
-                    </div>
-                </div>
-                
-                <button type="submit" class="w-full bg-brand-cyan text-white font-bold py-5 rounded-xl hover:bg-[#0096D1] transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 mt-4 text-lg">Kirim Permintaan</button>
+                <button type="submit" class="w-full bg-brand-cyan text-white font-bold py-5 rounded-xl hover:bg-[#0096D1] transition shadow-lg mt-6 text-lg"><span class="lang-id">Minta Kuotasi Harga</span><span class="lang-jp hidden">お見積もりを依頼する</span></button>
             </form>
         </div>
     </section>
 
-    <footer class="bg-brand-dark text-white pt-20 pb-10">
+    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-cyan">
         <div class="container mx-auto px-6 text-center">
-            <i class="fas fa-kaaba text-5xl text-brand-cyan mb-6"></i>
-            <h2 class="text-3xl font-extrabold mb-3 tracking-tight">Haramain Private</h2>
-            <p class="text-gray-400 text-base max-w-md mx-auto mb-10 leading-relaxed">Melayani jamaah Jepang dengan penuh amanah, berlandaskan Al-Qur'an dan As-Sunnah.</p>
-            <p class="text-sm text-gray-600 border-t border-gray-800 pt-8 font-medium">© 2026 Haramain Private. All rights reserved.</p>
+            <i class="fas fa-kaaba text-4xl text-brand-cyan mb-4"></i>
+            <h2 class="text-2xl font-bold mb-2">Haramain Private</h2>
+            <p class="text-gray-400 text-sm max-w-sm mx-auto mb-8"><span class="lang-id">Melayani jamaah Jepang dengan penuh amanah.</span><span class="lang-jp hidden">日本のお客様に誠実なサービスを提供します。</span></p>
+            <p class="text-xs text-gray-500 border-t border-gray-800 pt-8">© 2026 Haramain Private. All rights reserved.</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/818088452258?text=Bismillah.%20Assalamu%27alaikum.%20Admin%20Haramain%20Private,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Umroh%20dari%20Jepang." target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform flex items-center justify-center z-50">
-        <i class="fab fa-whatsapp text-3xl"></i>
-    </a>
-
-    <div id="imageModal" class="fixed inset-0 bg-brand-dark/95 backdrop-blur-md z-[100] hidden flex items-center justify-center opacity-0 transition-opacity duration-300 p-4">
-        <button onclick="closeModal()" class="absolute top-6 right-6 text-white/50 hover:text-white text-4xl transition-colors"><i class="fas fa-times"></i></button>
-        <img id="modalImage" src="" class="max-h-[90vh] max-w-full rounded-xl shadow-2xl transform scale-95 transition-transform duration-300 object-contain">
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="assets/js/swiper-init.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
