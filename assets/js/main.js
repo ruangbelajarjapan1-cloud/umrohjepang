@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 2. TOGGLE BAHASA (ID / EN) - SUDAH DIPERBAIKI
+    // 2. TOGGLE BAHASA (ID / EN)
     const langBtn = document.getElementById('lang-toggle');
     const elementsId = document.querySelectorAll('.lang-id');
-    const elementsEn = document.querySelectorAll('.lang-en'); // Menggunakan class .lang-en
+    const elementsEn = document.querySelectorAll('.lang-en');
     let currentLang = 'id';
 
     if (langBtn) {
@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
             
             const catatan = formData.get('catatan') ? formData.get('catatan') : "-";
             
-            // Note: Pesan WhatsApp dibiarkan berbahasa Indonesia karena tujuannya ke Admin Anda
             let textWA = `Bismillah. Assalamu'alaikum.\n\nAdmin Haramain, saya *${nama}* ingin konsultasi.\n\nSaya tertarik dengan layanan:\n- ${layananDipilih.length > 0 ? layananDipilih.join('\n- ') : 'Konsultasi Umum'}\n\nCatatan Tambahan: ${catatan}\n\nMohon informasi langkah selanjutnya. Jazakumullah khairan.`;
             
             const encodedTextWA = encodeURIComponent(textWA);
@@ -120,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 7. WIDGET LIVE HARAMAIN (WAKTU & CUACA)
+    // 5. WIDGET LIVE HARAMAIN (WAKTU & CUACA)
     function initHaramainWidget() {
         const timeMakkah = document.getElementById('time-makkah');
         const timeMadinah = document.getElementById('time-madinah');
@@ -151,58 +150,79 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     initHaramainWidget();
 
-});
+    // 6. EDUKASI RUKUN UMROH (TIMELINE TAB LOGIC)
+    // Dideklarasikan ke window agar bisa diakses onclick dari HTML
+    window.showRukun = function(rukunId) {
+        const contents = document.querySelectorAll('.rukun-content');
+        contents.forEach(content => content.classList.add('hidden'));
 
-// 5. EDUKASI RUKUN UMROH (TIMELINE TAB LOGIC)
-function showRukun(rukunId) {
-    const contents = document.querySelectorAll('.rukun-content');
-    contents.forEach(content => content.classList.add('hidden'));
+        const buttons = document.querySelectorAll('.rukun-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('bg-brand-cyan', 'text-white', 'shadow-md');
+            btn.classList.add('bg-white', 'text-gray-500');
+        });
 
-    const buttons = document.querySelectorAll('.rukun-btn');
-    buttons.forEach(btn => {
-        btn.classList.remove('bg-brand-cyan', 'text-white', 'shadow-md');
-        btn.classList.add('bg-white', 'text-gray-500');
-    });
+        document.getElementById(`content-${rukunId}`).classList.remove('hidden');
 
-    document.getElementById(`content-${rukunId}`).classList.remove('hidden');
-
-    const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(rukunId));
-    if(activeBtn) {
-        activeBtn.classList.remove('bg-white', 'text-gray-500');
-        activeBtn.classList.add('bg-brand-cyan', 'text-white', 'shadow-md');
+        const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(rukunId));
+        if(activeBtn) {
+            activeBtn.classList.remove('bg-white', 'text-gray-500');
+            activeBtn.classList.add('bg-brand-cyan', 'text-white', 'shadow-md');
+        }
     }
-}
 
-// 6. MODAL LOGIC (ANIMASI TIMBUL)
-const modal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImage');
+    // 7. MODAL LOGIC (ANIMASI TIMBUL)
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
 
-function openModal(imgSrc) {
-    if(!modal) return;
-    modalImg.src = imgSrc;
-    modal.classList.remove('hidden');
-    setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        modalImg.classList.remove('scale-95');
-        modalImg.classList.add('scale-100'); 
-    }, 10);
-    document.body.style.overflow = 'hidden'; 
-}
+    window.openModal = function(imgSrc) {
+        if(!modal) return;
+        modalImg.src = imgSrc;
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modalImg.classList.remove('scale-95');
+            modalImg.classList.add('scale-100'); 
+        }, 10);
+        document.body.style.overflow = 'hidden'; 
+    }
 
-function closeModal() {
-    if(!modal) return;
-    modalImg.classList.remove('scale-100');
-    modalImg.classList.add('scale-95');
-    modal.classList.add('opacity-0');
-    setTimeout(() => { 
-        modal.classList.add('hidden'); 
-        modalImg.src = ""; 
-    }, 300); 
-    document.body.style.overflow = 'auto'; 
-}
+    window.closeModal = function() {
+        if(!modal) return;
+        modalImg.classList.remove('scale-100');
+        modalImg.classList.add('scale-95');
+        modal.classList.add('opacity-0');
+        setTimeout(() => { 
+            modal.classList.add('hidden'); 
+            modalImg.src = ""; 
+        }, 300); 
+        document.body.style.overflow = 'auto'; 
+    }
 
-if(modal) {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+    if(modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+
+    // 8. NEW: SCROLL TO TOP LOGIC
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            // Tampilkan tombol
+            scrollTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+            scrollTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+            // Sembunyikan tombol
+            scrollTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
+            scrollTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
     });
-}
+
+    if(scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+});
