@@ -3,22 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // 1. STICKY NAVBAR & EFEK PARALLAX
     const navbar = document.getElementById('navbar');
     const topBanner = document.getElementById('top-banner');
-    const parallaxBg = document.getElementById('parallax-bg'); // Elemen Background Hero
+    const parallaxBg = document.getElementById('parallax-bg');
 
     window.addEventListener('scroll', () => {
         let scrollPos = window.scrollY;
 
-        // Eksekusi Efek Parallax Halus (Gambar bergerak lebih lambat ke bawah)
         if (parallaxBg) {
-            // Bergerak 30% lebih lambat dari kecepatan scroll normal
             parallaxBg.style.transform = `translateY(${scrollPos * 0.3}px) scale(1.15)`;
         }
 
-        // Eksekusi Sticky Navbar
         if (scrollPos > 50) {
             navbar.classList.add('bg-white/95', 'shadow-md', 'py-4', 'border-gray-100');
             navbar.classList.remove('bg-transparent', 'py-5', 'border-transparent');
-            
             if(topBanner) {
                 topBanner.classList.add('h-0', 'py-0', 'opacity-0');
                 topBanner.classList.remove('py-2', 'opacity-100');
@@ -26,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             navbar.classList.add('bg-transparent', 'py-5', 'border-transparent');
             navbar.classList.remove('bg-white/95', 'shadow-md', 'py-4', 'border-gray-100');
-            
             if(topBanner) {
                 topBanner.classList.remove('h-0', 'py-0', 'opacity-0');
                 topBanner.classList.add('py-2', 'opacity-100');
@@ -83,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const formData = new FormData(formPendaftaran);
             const data = new URLSearchParams(formData);
 
-            // === LOGIKA MENYUSUN PESAN WHATSAPP ===
             const nama = formData.get('nama');
             let layananDipilih = [];
             
@@ -101,10 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const waLink = `https://wa.me/${waNumber}?text=${encodedTextWA}`;
 
             try {
-                // Eksekusi pengiriman ke Google Sheets
                 await fetch(GAS_URL, { method: 'POST', body: data, mode: 'no-cors' });
                 
-                // Tampilkan pesan Sukses di Web
                 formPendaftaran.innerHTML = `
                     <div class="text-center py-10 animate-fade">
                         <i class="fas fa-check-circle text-6xl text-brand-cyan mb-4"></i>
@@ -114,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
 
-                // Otomatis Buka WhatsApp setelah 2 detik
                 setTimeout(() => {
                     window.open(waLink, '_blank');
                 }, 2000);
@@ -126,6 +117,43 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // 7. WIDGET LIVE HARAMAIN (WAKTU & CUACA)
+    // Fungsi ini dipanggil secara otomatis saat web dimuat
+    function initHaramainWidget() {
+        const timeMakkah = document.getElementById('time-makkah');
+        const timeMadinah = document.getElementById('time-madinah');
+        const tempMakkah = document.getElementById('temp-makkah');
+        const tempMadinah = document.getElementById('temp-madinah');
+
+        // A. Update Jam Live (Zona Waktu Arab Saudi)
+        setInterval(() => {
+            const options = { timeZone: 'Asia/Riyadh', hour: '2-digit', minute:'2-digit', hour12: false };
+            const timeString = new Intl.DateTimeFormat('id-ID', options).format(new Date());
+            if(timeMakkah) timeMakkah.innerText = timeString;
+            if(timeMadinah) timeMadinah.innerText = timeString;
+        }, 1000);
+
+        // B. Ambil Data Cuaca Menggunakan Open-Meteo API (Gratis, Tanpa Key)
+        async function fetchWeather() {
+            try {
+                // Koordinat Makkah (21.4225, 39.8262)
+                const resMakkah = await fetch('https://api.open-meteo.com/v1/forecast?latitude=21.4225&longitude=39.8262&current_weather=true');
+                const dataMakkah = await resMakkah.json();
+                if(tempMakkah) tempMakkah.innerText = `${Math.round(dataMakkah.current_weather.temperature)}°C`;
+                
+                // Koordinat Madinah (24.4686, 39.6142)
+                const resMadinah = await fetch('https://api.open-meteo.com/v1/forecast?latitude=24.4686&longitude=39.6142&current_weather=true');
+                const dataMadinah = await resMadinah.json();
+                if(tempMadinah) tempMadinah.innerText = `${Math.round(dataMadinah.current_weather.temperature)}°C`;
+            } catch (e) {
+                console.log("Tidak dapat memuat cuaca", e);
+            }
+        }
+        fetchWeather();
+    }
+    initHaramainWidget(); // Jalankan fungsi
+
 });
 
 // 5. EDUKASI RUKUN UMROH (TIMELINE TAB LOGIC)
@@ -148,7 +176,7 @@ function showRukun(rukunId) {
     }
 }
 
-// 6. MODAL LOGIC (ANIMASI TIMBUL / ZOOM-IN)
+// 6. MODAL LOGIC (ANIMASI TIMBUL)
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
 
