@@ -1,14 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. STICKY NAVBAR EFFECT
+    // 1. STICKY NAVBAR EFFECT (Perbaikan Overlap Banner Biru)
     const navbar = document.getElementById('navbar');
+    const topBanner = document.getElementById('top-banner');
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.classList.add('bg-white/95', 'shadow-md', 'py-4');
-            navbar.classList.remove('bg-transparent', 'py-5');
+            navbar.classList.add('bg-white/95', 'shadow-md', 'py-4', 'border-gray-100');
+            navbar.classList.remove('bg-transparent', 'py-5', 'border-transparent');
+            
+            // Menyembunyikan banner biru secara halus saat di-scroll
+            if(topBanner) {
+                topBanner.classList.add('h-0', 'py-0', 'opacity-0');
+                topBanner.classList.remove('py-2', 'opacity-100');
+            }
         } else {
-            navbar.classList.add('bg-transparent', 'py-5');
-            navbar.classList.remove('bg-white/95', 'shadow-md', 'py-4');
+            navbar.classList.add('bg-transparent', 'py-5', 'border-transparent');
+            navbar.classList.remove('bg-white/95', 'shadow-md', 'py-4', 'border-gray-100');
+            
+            // Memunculkan kembali banner biru saat di paling atas
+            if(topBanner) {
+                topBanner.classList.remove('h-0', 'py-0', 'opacity-0');
+                topBanner.classList.add('py-2', 'opacity-100');
+            }
         }
     });
 
@@ -45,26 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, appearOptions);
     fadeElements.forEach(el => appearOnScroll.observe(el));
 
-    // 4. SCROLL TO TOP BUTTON 
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    if(scrollTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.remove('scale-0');
-                scrollTopBtn.classList.add('scale-100');
-            } else {
-                scrollTopBtn.classList.remove('scale-100');
-                scrollTopBtn.classList.add('scale-0');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // 5. INTEGRASI BACKEND & OTOMATISASI WHATSAPP
-    // URL Google Apps Script Mas Wahyu
+    // 4. INTEGRASI BACKEND GOOGLE SHEETS & DIRECT WHATSAPP
     const GAS_URL = "https://script.google.com/macros/s/AKfycbxABK7a7u8qE5QsPCgUuSMkTAoPvCT_zC3YExkLKZ-tcwOZe-kWNhqA1U1j7KRc0IWTlA/exec"; 
     const formPendaftaran = document.getElementById('formPendaftaran');
     
@@ -74,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const btnSubmit = formPendaftaran.querySelector('button[type="submit"]');
             const originalText = btnSubmit.innerHTML;
             
-            btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Memproses...';
+            btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Memproses Data...';
             btnSubmit.disabled = true;
 
             const formData = new FormData(formPendaftaran);
@@ -84,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const nama = formData.get('nama');
             let layananDipilih = [];
             
-            // Cek kotak mana saja yang dicentang
             if(formData.get('layanan_full')) layananDipilih.push("Paket Lengkap (Full Service)");
             if(formData.get('layanan_visa')) layananDipilih.push("Jasa Visa Saja");
             if(formData.get('layanan_transport')) layananDipilih.push("Sewa Mobil VIP");
@@ -92,19 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
             
             const catatan = formData.get('catatan') ? formData.get('catatan') : "-";
             
-            // Susun template teks WA
             let textWA = `Bismillah. Assalamu'alaikum.\n\nAdmin Haramain Private, saya *${nama}* ingin konsultasi.\n\nSaya tertarik dengan layanan:\n- ${layananDipilih.length > 0 ? layananDipilih.join('\n- ') : 'Konsultasi Umum'}\n\nCatatan Tambahan: ${catatan}\n\nMohon informasi langkah selanjutnya. Jazakumullah khairan.`;
             
-            // Encode URL dan masukkan nomor WA Anda
             const encodedTextWA = encodeURIComponent(textWA);
             const waNumber = "818088452258"; // Nomor Mas Wahyu
             const waLink = `https://wa.me/${waNumber}?text=${encodedTextWA}`;
 
             try {
-                // 1. Eksekusi penyimpanan data ke Google Sheets (Mode silent)
+                // 1. Eksekusi pengiriman ke Google Sheets
                 await fetch(GAS_URL, { method: 'POST', body: data, mode: 'no-cors' });
                 
-                // 2. Ganti Form menjadi pesan Sukses
+                // 2. Tampilkan pesan Sukses di Web
                 formPendaftaran.innerHTML = `
                     <div class="text-center py-10 animate-fade">
                         <i class="fas fa-check-circle text-6xl text-brand-cyan mb-4"></i>
@@ -114,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
 
-                // 3. Trigger otomatis buka tab WhatsApp setelah 2 detik
+                // 3. Otomatis Buka WhatsApp setelah 2 detik
                 setTimeout(() => {
                     window.open(waLink, '_blank');
                 }, 2000);
@@ -128,23 +120,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// 6. EDUKASI RUKUN UMROH (TIMELINE TAB LOGIC)
+// 5. EDUKASI RUKUN UMROH (TIMELINE TAB LOGIC)
 function showRukun(rukunId) {
-    // Sembunyikan semua konten
     const contents = document.querySelectorAll('.rukun-content');
     contents.forEach(content => content.classList.add('hidden'));
 
-    // Reset style semua tombol
     const buttons = document.querySelectorAll('.rukun-btn');
     buttons.forEach(btn => {
         btn.classList.remove('bg-brand-cyan', 'text-white', 'shadow-md');
         btn.classList.add('bg-white', 'text-gray-500');
     });
 
-    // Tampilkan konten yang dipilih
     document.getElementById(`content-${rukunId}`).classList.remove('hidden');
 
-    // Aktifkan style tombol yang di-klik
     const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(rukunId));
     if(activeBtn) {
         activeBtn.classList.remove('bg-white', 'text-gray-500');
@@ -152,46 +140,36 @@ function showRukun(rukunId) {
     }
 }
 
-// 7. MODAL LOGIC (ANIMASI TIMBUL / ZOOM-IN)
+// 6. MODAL LOGIC (ANIMASI TIMBUL / ZOOM-IN)
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
 
-function openModal(imgSrc, descText) {
+function openModal(imgSrc) {
     if(!modal) return;
     modalImg.src = imgSrc;
-    
-    // Tampilkan modal (background)
     modal.classList.remove('hidden');
-    
-    // Animasi munculnya modal dan gambar yang membesar
     setTimeout(() => {
         modal.classList.remove('opacity-0');
         modalImg.classList.remove('scale-95');
         modalImg.classList.add('scale-100'); 
     }, 10);
-    
-    document.body.style.overflow = 'hidden'; // Kunci scroll
+    document.body.style.overflow = 'hidden'; 
 }
 
 function closeModal() {
     if(!modal) return;
-    
-    // Animasi gambar mengecil kembali
     modalImg.classList.remove('scale-100');
     modalImg.classList.add('scale-95');
     modal.classList.add('opacity-0');
-    
     setTimeout(() => { 
         modal.classList.add('hidden'); 
         modalImg.src = ""; 
-    }, 300); // Tunggu durasi transisi CSS
-    
-    document.body.style.overflow = 'auto'; // Buka scroll
+    }, 300); 
+    document.body.style.overflow = 'auto'; 
 }
 
 if(modal) {
     modal.addEventListener('click', (e) => {
-        // Hanya tutup jika klik di area luar gambar
         if (e.target === modal) closeModal();
     });
 }
