@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const nama = formData.get('nama');
             let layananDipilih = [];
             
-            if(formData.get('layanan_reguler')) layananDipilih.push("Paket Reguler (Grup Hemat)");
+            // DIUBAH MENJADI PAKET HEMAT
+            if(formData.get('layanan_reguler')) layananDipilih.push("Paket Hemat (Grup Ekonomis)");
             if(formData.get('layanan_full')) layananDipilih.push("Paket Private (Keluarga)");
             if(formData.get('layanan_visa')) layananDipilih.push("Jasa Visa Saja");
             if(formData.get('layanan_transport')) layananDipilih.push("Sewa Mobil VIP");
@@ -151,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initHaramainWidget();
 
     // 6. EDUKASI RUKUN UMROH (TIMELINE TAB LOGIC)
-    // Dideklarasikan ke window agar bisa diakses onclick dari HTML
     window.showRukun = function(rukunId) {
         const contents = document.querySelectorAll('.rukun-content');
         contents.forEach(content => content.classList.add('hidden'));
@@ -205,15 +205,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 8. NEW: SCROLL TO TOP LOGIC
+    // 8. SCROLL TO TOP LOGIC
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
-            // Tampilkan tombol
             scrollTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
             scrollTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
         } else {
-            // Sembunyikan tombol
             scrollTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
             scrollTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
         }
